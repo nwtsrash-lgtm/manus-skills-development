@@ -1,0 +1,1761 @@
+{
+  "schema_version": "0.1.0",
+  "generated_at": "2026-08-13T03:11:22+00:00",
+  "quality_gates": "governance/quality_gates.json",
+  "summary": {
+    "skill_count": 33,
+    "approved_count": 33,
+    "needs_work_count": 0
+  },
+  "skills": [
+    {
+      "skill": "automation-and-scheduling",
+      "path": "skills/automation-and-scheduling",
+      "risk_level": "high",
+      "line_count": 116,
+      "word_count": 2727,
+      "frontmatter": {
+        "name": "automation-and-scheduling",
+        "description": "MUST read before requests involving automated execution, recurring execution, background execution, event-triggered execution, bot/agent execution, auto-updating systems, or ANY system that integrates with external APIs, synchronizes data, handles webhooks, or requires background processes — even if the primary ask is a website, web app, or bot. Use it to choose the right implementation approach before building."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "116 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "builtin-llm-models",
+      "path": "skills/builtin-llm-models",
+      "risk_level": "medium",
+      "line_count": 337,
+      "word_count": 1779,
+      "frontmatter": {
+        "name": "builtin-llm-models",
+        "description": "Reference for Manus's built-in LLM catalog and how to call it correctly. Read this BEFORE writing any script that calls LLMs in bulk (summarization, translation, classification, extraction, deep analysis, judging/evaluation, map/parallel fan-out) inside the sandbox, AND before using the built-in LLM in a webdev project (invokeLLM / listLLMModels). Use it to discover which models exist, each model's price/capabilities, how to pick one, the exact request shapes (thinking/reasoning, JSON-schema structured output, vision, tools), and the per-model gotchas (max-token handling, reasoning syntax) verified against the live proxy."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "337 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "excel-generator",
+      "path": "skills/excel-generator",
+      "risk_level": "low",
+      "line_count": 24,
+      "word_count": 271,
+      "frontmatter": {
+        "name": "excel-generator",
+        "description": "إنشاء وتعديل جداول Excel احترافية لتنظيم البيانات وتحليلها وعرضها بوضوح. استخدمها عند طلب workbook أو tracker أو تحليل جدولي أو لوحة بيانات؛ ولا تستخدمها لنمذجة مالية احترافية مثل DCF أو LBO أو Comps، إذ تتبع تلك المخرجات مهارة finance-pro-playbooks ومعاييرها."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "24 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "finance-pro-playbooks",
+      "path": "skills/finance-pro-playbooks",
+      "risk_level": "medium",
+      "line_count": 201,
+      "word_count": 3532,
+      "frontmatter": {
+        "name": "finance-pro-playbooks",
+        "description": "Comprehensive workflow guide for ANY finance, investing, or company analysis task. MUST read for: (1) General investment research — analyzing stocks/companies, reading earnings/filings, fetching financial data, or researching industries; (2) Professional IB/PE/VC tasks — valuation & modeling (DCF/LBO/comps), deal structuring, due diligence, M&A materials (teaser/CIM), and IC memos. Encodes professional data-sourcing rules (source hierarchy, fiscal-period discipline), silent industry defaults, and deliverable formatting standards; for finance Excel outputs its formats/excel_standards.md supersedes generic spreadsheet skills (e.g., excel-generator). DO NOT use for: quant trading system development, legal dispute calculations, or personal tax filing."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "201 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "game-dev",
+      "path": "skills/game-dev",
+      "risk_level": "medium",
+      "line_count": 56,
+      "word_count": 862,
+      "frontmatter": {
+        "name": "game-dev",
+        "description": "Build playable browser games (Babylon.js) end-to-end using the godogen production pipeline adapted to Manus. Use when the user wants to make, generate, rebuild, or substantially extend a web/browser game from a natural-language brief. Runs godogen's staged workflow (visual target, risk decomposition, scaffold, architecture, asset generation, implementation, visual verification) but hosts the game in a Manus WebDev project, replaces godogen's paid art CLIs (Gemini/Grok/Tripo3D) with Manus built-in image generation, and deploys through WebDev Publish instead of temporary links."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "56 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "gws-best-practices",
+      "path": "skills/gws-best-practices",
+      "risk_level": "low",
+      "line_count": 88,
+      "word_count": 747,
+      "frontmatter": {
+        "name": "gws-best-practices",
+        "description": "Best practices for using the gws CLI with supported Google Workspace services (Drive, Docs, Sheets, Slides). Use when performing any operation with the gws CLI."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 5
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "88 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "imagegen",
+      "path": "skills/imagegen",
+      "risk_level": "medium",
+      "line_count": 150,
+      "word_count": 2330,
+      "frontmatter": {
+        "name": "imagegen",
+        "description": "Use for visual deliverable routing and image generation/editing tasks, including new images, image edits, image upscaling/restoration/enhancement, UI mockups, diagrams, infographics, posters, icons, logos, charts, visual assets, and ambiguous visual requests. Helps choose between Mermaid, Python plotting, static layout/code screenshots, web/app development, and AI image generation/editing."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "150 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "intelligent-free-cloud-architect",
+      "path": "skills/intelligent-free-cloud-architect",
+      "risk_level": "medium",
+      "line_count": 154,
+      "word_count": 1709,
+      "frontmatter": {
+        "name": "intelligent-free-cloud-architect",
+        "description": "بحث وتحقق معمق من خدمات الاستضافة وقواعد البيانات والتخزين المجانية، ثم تصميم حلول سحابية هجينة آمنة منخفضة التكلفة وربطها مع GitHub والخدمات الخارجية. استخدمها عندما يطلب المستخدم أفضل منصة مجانية، مقارنة عروض سحابية، قاعدة بيانات دائمة، ترحيل من منصة، أو معمارية تربط خدمات متعددة دون مفاجآت تكلفة أو فقد بيانات."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 5
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "154 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "manus-api",
+      "path": "skills/manus-api",
+      "risk_level": "high",
+      "line_count": 72,
+      "word_count": 727,
+      "frontmatter": {
+        "name": "manus-api",
+        "description": "بناء أو تشخيص تكاملات Manus API v2 لإدارة المهام والملفات والمشاريع والويب هوكس والمخرجات المنظمة وOAuth. استخدمها عندما يحتاج برنامج خارجي إلى استدعاء Manus أو متابعة نتائجه أو إدارة أثره؛ ولا تستخدمها لمهمة تُنفذ مباشرة داخل هذه الجلسة من دون تكامل برمجي."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 10
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "72 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "manus-config",
+      "path": "skills/manus-config",
+      "risk_level": "high",
+      "line_count": 253,
+      "word_count": 3024,
+      "frontmatter": {
+        "name": "manus-config",
+        "description": "Manage connectors (App, Custom API, Custom MCP), project instructions and shared files, and scheduled task execution with manus-config. Use when the user asks to enable, inspect, or modify integrations; create a new connector from an MCP server URL/command or an API key the user provides; inspect, update, or delete the user's own custom connectors; manage project-level configuration or shared project files; explicitly add, update, or remove shared project web links; or create, update, inspect, pause, expire, or troubleshoot scheduled tasks using cron, intervals, connector UIDs, or run-as-new behavior."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "253 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "manus-pptx",
+      "path": "skills/manus-pptx",
+      "risk_level": "low",
+      "line_count": 286,
+      "word_count": 3999,
+      "frontmatter": {
+        "name": "manus-pptx",
+        "description": "Write slides using Manus's PPTX-specific XML syntax (a project-custom markup language, authored by AI and losslessly exportable to pptx). This document contains syntax information only, so do not read it until you are ready to start editing (e.g. not at session start or during the research phase)."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "286 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "music-prompter",
+      "path": "skills/music-prompter",
+      "risk_level": "low",
+      "line_count": 139,
+      "word_count": 1796,
+      "frontmatter": {
+        "name": "music-prompter",
+        "description": "MUST read this skill BEFORE entering generate mode for music tasks. Covers prompt crafting framework, structure syntax, and multi-clip strategy."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "139 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "persistent-computing",
+      "path": "skills/persistent-computing",
+      "risk_level": "high",
+      "line_count": 102,
+      "word_count": 1322,
+      "frontmatter": {
+        "name": "persistent-computing",
+        "description": "MUST read when user needs to run persistent services that WebDev or the default sandbox may not support (automation scripts, game servers, self-hosted open-source apps), or requires Docker, fixed IP, background jobs, heavy compute, or a reusable environment across sessions. MUST also read before develop/deploy any service on an attached persistent VM (Cloud Computer). Guides persistent computing solutions vs sandbox vs WebDev."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "102 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "read-special-images",
+      "path": "skills/read-special-images",
+      "risk_level": "medium",
+      "line_count": 84,
+      "word_count": 755,
+      "frontmatter": {
+        "name": "read-special-images",
+        "description": "Read and OCR unusually tall, wide, high-resolution, or text-dense images without hallucinating content lost to inline vision scaling. Use for long screenshots, panoramic images, large diagrams, dense documents, tiny unreadable text, or any image whose whole-image preview is not reliable; keep ordinary readable images unsplit."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "84 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "skill-creator",
+      "path": "skills/skill-creator",
+      "risk_level": "medium",
+      "line_count": 68,
+      "word_count": 681,
+      "frontmatter": {
+        "name": "skill-creator",
+        "description": "إنشاء وتطوير وتدقيق مهارات Manus القابلة لإعادة الاستخدام، بما يشمل التعليمات والموارد والاختبارات. استخدمها عند طلب إنشاء مهارة جديدة أو تعديل مهارة قائمة أو استيراد مهارة مجتمعية أو رفع جودة حزمة مهارات؛ واقرأها قبل تحرير أي ملف داخل مهارة."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 5
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "68 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "systematic-debugging",
+      "path": "skills/systematic-debugging",
+      "risk_level": "medium",
+      "line_count": 60,
+      "word_count": 673,
+      "frontmatter": {
+        "name": "systematic-debugging",
+        "description": "تشخيص وإصلاح الأعطال التقنية بصورة منهجية وآمنة. استخدمها عند وجود خطأ برمجي، فشل اختبار أو بناء أو نشر، سلوك غير متوقع، تراجع في الأداء، أو خلل في تكامل؛ خصوصًا قبل اقتراح أي تغيير في الشفرة أو الإعدادات. لا تستخدمها لطلب عام لبناء ميزة جديدة أو لمشكلة لا يمكن جمع أدلة عنها بعد."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 5
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "60 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "tts-prompter",
+      "path": "skills/tts-prompter",
+      "risk_level": "low",
+      "line_count": 251,
+      "word_count": 2548,
+      "frontmatter": {
+        "name": "tts-prompter",
+        "description": "MUST read this skill BEFORE entering generate mode for text-to-speech (TTS) tasks. Covers prompt crafting framework, separating spoken text from style instructions, and using markup tags vs natural language for emotions and non-speech sounds."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "251 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "typst-pdf-maker",
+      "path": "skills/typst-pdf-maker",
+      "risk_level": "low",
+      "line_count": 192,
+      "word_count": 2811,
+      "frontmatter": {
+        "name": "typst-pdf-maker",
+        "description": "Generate professional, high-quality PDF documents with Typst. Use for reports, academic papers, resumes, structured documents, mathematical typesetting, code-rich documents, precise layouts, and CJK typography when Markdown-to-PDF is insufficient. Select one skill-owned asset or compatible Typst Universe base before adding packages. Route ordinary presentation requests to Manus Slides/PPTX unless the user explicitly requires Typst-generated PDF slides."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "192 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-custom-dockerfile",
+      "path": "skills/webdev-custom-dockerfile",
+      "risk_level": "high",
+      "line_count": 122,
+      "word_count": 1826,
+      "frontmatter": {
+        "name": "webdev-custom-dockerfile",
+        "description": "Manus webdev fullstack (web-db-user) projects — the deploy contract for a custom root Dockerfile (build context, secrets injection, build budget, runtime limits, base-image choice, worked examples). Read BEFORE writing or editing a Dockerfile; needed only when production requires an extra system binary (ffmpeg, chromium, fonts...) or another language runtime (Python, Ruby, Java, Go...)."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "122 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-data-api",
+      "path": "skills/webdev-data-api",
+      "risk_level": "high",
+      "line_count": 37,
+      "word_count": 430,
+      "frontmatter": {
+        "name": "webdev-data-api",
+        "description": "جلب بيانات خارجية لتطبيقات Manus WebDev الكاملة أو Expo عبر Manus API Hub أو تكامل خادمي موثوق. استخدمها عند إضافة مصدر بيانات عام أو شريك خارجي أو مزامنة قراءة؛ ولا تستخدمها لتخزين بيانات التطبيق الأساسية أو لتنفيذ طلب حساس مباشرة من المتصفح."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "37 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-file-storage",
+      "path": "skills/webdev-file-storage",
+      "risk_level": "high",
+      "line_count": 38,
+      "word_count": 417,
+      "frontmatter": {
+        "name": "webdev-file-storage",
+        "description": "رفع وعرض ملفات المستخدمين وصورهم ووثائقهم في تطبيقات Manus WebDev الكاملة أو Expo عبر مساعدات التخزين المضمنة. استخدمها عند الحاجة إلى حفظ bytes خارج قاعدة البيانات وربطها بسجل تطبيق؛ ولا تستخدمها لحفظ أسرار أو كبديل عن صلاحيات التطبيق أو قاعدة بيانات الميتاداتا."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "38 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-image-generation",
+      "path": "skills/webdev-image-generation",
+      "risk_level": "medium",
+      "line_count": 40,
+      "word_count": 391,
+      "frontmatter": {
+        "name": "webdev-image-generation",
+        "description": "توليد أو تعديل الصور داخل تطبيقات Manus WebDev الكاملة أو Expo عبر خدمة الصور المضمنة. استخدمها عند بناء ميزة تطلب صورة جديدة أو تحرير صورة يملك المستخدم حق استخدامها؛ ولا تستخدمها لتعديل ملف المستخدم مباشرة من العميل أو لاختيار نموذج من اسم ثابت غير متحقق منه."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "40 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-llm-integration",
+      "path": "skills/webdev-llm-integration",
+      "risk_level": "medium",
+      "line_count": 40,
+      "word_count": 502,
+      "frontmatter": {
+        "name": "webdev-llm-integration",
+        "description": "بناء ميزات ذكاء اصطناعي داخل تطبيقات Manus WebDev الكاملة أو Expo عبر invokeLLM وlistLLMModels، بما يشمل المحادثة والمخرجات المنظمة والتفكير والبث. استخدمها عند احتياج التطبيق إلى استدعاء LLM من الخادم؛ ولا تستخدمها لتضمين مفتاح أو طلب نموذج مباشرة في العميل أو لافتراض نموذج ثابت من الذاكرة."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "40 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-manus-oauth",
+      "path": "skills/webdev-manus-oauth",
+      "risk_level": "high",
+      "line_count": 28,
+      "word_count": 361,
+      "frontmatter": {
+        "name": "webdev-manus-oauth",
+        "description": "الحفاظ على تدفق OAuth وعمليات إعادة التوجيه وروابط الدعوة في مشاريع Manus WebDev الكاملة. استخدمها عند تعديل تسجيل الدخول أو callback أو magic link أو invitation URL؛ ولا تستخدمها لإنشاء callback ثانٍ أو لتخمين أصل الواجهة من الخادم أو لقبول origin غير متحقق منه."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "28 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-maps-integration",
+      "path": "skills/webdev-maps-integration",
+      "risk_level": "high",
+      "line_count": 29,
+      "word_count": 341,
+      "frontmatter": {
+        "name": "webdev-maps-integration",
+        "description": "دمج خرائط Google والترميز الجغرافي والاتجاهات والأماكن في مشاريع Manus WebDev الكاملة عبر MapView وطبقة الخادم المضمنة. استخدمها عند عرض موقع أو تنفيذ بحث مكان أو اتجاهات أو عملية خرائط؛ ولا تستخدمها لطلب مفتاح Google من المستخدم أو لتخزين موقع حساس بلا غرض وصلاحية ومدة احتفاظ محددة."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "29 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-owner-notifications",
+      "path": "skills/webdev-owner-notifications",
+      "risk_level": "high",
+      "line_count": 24,
+      "word_count": 270,
+      "frontmatter": {
+        "name": "webdev-owner-notifications",
+        "description": "إرسال تنبيهات تشغيلية إلى مالك مشروع Manus WebDev الكامل أو Expo عبر notifyOwner. استخدمها عند وجود حدث يحتاج انتباه مالك المشروع، مثل فشل مهمة أو إرسال نموذج أو نتيجة سير عمل؛ ولا تستخدمها لرسائل المستخدم النهائي أو لتكرار حدث واحد دون إلغاء ازدواج."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "24 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-periodic-updates",
+      "path": "skills/webdev-periodic-updates",
+      "risk_level": "high",
+      "line_count": 275,
+      "word_count": 2121,
+      "frontmatter": {
+        "name": "webdev-periodic-updates",
+        "description": "Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — scheduled work reference (Heartbeat) for recurring jobs, daily/hourly tasks, end-user-scheduled cron, periodic notifications. Read FIRST before planning or coding anything that runs on a schedule."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "275 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-readme-fullstack",
+      "path": "skills/webdev-readme-fullstack",
+      "risk_level": "medium",
+      "line_count": 37,
+      "word_count": 397,
+      "frontmatter": {
+        "name": "webdev-readme-fullstack",
+        "description": "دليل تشغيل قالب Manus WebDev الكامل الذي يوفر React وTypeScript وخادم Express وtRPC وقاعدة بيانات ومصادقة وتخزين. استخدمه عند بناء أو تعديل تطبيق WebDev يحتاج بيانات أو مستخدمين أو عمليات خادمية؛ ولا تستخدمه لموقع ثابت أو تطبيق هاتف أو خدمة خارج بيئة WebDev."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "37 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-readme-mobile",
+      "path": "skills/webdev-readme-mobile",
+      "risk_level": "medium",
+      "line_count": 36,
+      "word_count": 330,
+      "frontmatter": {
+        "name": "webdev-readme-mobile",
+        "description": "دليل تشغيل قالب Manus WebDev Mobile المبني على Expo وReact Native. استخدمه عند بناء أو تعديل تطبيق هاتف؛ ولا تستخدمه لموقع ويب فقط أو لخلفية API تفصيلية أو لخدمة خادمية خارج التطبيق."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "36 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-readme-mobile-backend",
+      "path": "skills/webdev-readme-mobile-backend",
+      "risk_level": "medium",
+      "line_count": 36,
+      "word_count": 330,
+      "frontmatter": {
+        "name": "webdev-readme-mobile-backend",
+        "description": "دليل خلفية تطبيقات Manus WebDev Mobile التي تحتاج مصادقة وقاعدة بيانات وtRPC وملفات أو تكاملات خادمية. استخدمه عند بناء أو تعديل طبقة بيانات أو API لتطبيق Expo؛ ولا تستخدمه لتنسيق واجهة هاتف فقط أو لموقع ثابت بلا خادم."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "36 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-readme-static",
+      "path": "skills/webdev-readme-static",
+      "risk_level": "medium",
+      "line_count": 36,
+      "word_count": 317,
+      "frontmatter": {
+        "name": "webdev-readme-static",
+        "description": "دليل تشغيل قالب Manus WebDev الثابت المبني على React وTypeScript وVite. استخدمه عند بناء أو تعديل موقع أو واجهة ثابتة تفاعلية بلا قاعدة بيانات أو خادم خاص؛ ولا تستخدمه عند الحاجة إلى مصادقة أو بيانات محمية أو عمليات خادمية أو تطبيق هاتف."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "36 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-ssr-conversion",
+      "path": "skills/webdev-ssr-conversion",
+      "risk_level": "medium",
+      "line_count": 105,
+      "word_count": 3786,
+      "frontmatter": {
+        "name": "webdev-ssr-conversion",
+        "description": "Convert a client-only React 19 + Vite + Express + tRPC 11 SPA (the Manus \"web-db-user\" full-stack template) into a Server-Side Rendered (SSR) app so crawlers and social scrapers receive fully-populated first-paint HTML with correct per-route title and meta tags. Use when a project built on this template needs SEO, link-preview cards, or crawler-visible content, or when asked to \"make the site SSR\", \"server-render\", \"fix SEO / prerender\", or \"make Googlebot see the content\". Only for projects built on this template (wouter + @trpc/react-query + superjson, Express entry at server/_core). Do NOT use for Next.js/Remix/Astro apps, apps that already render on the server, or general SEO questions unrelated to this template."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "105 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "webdev-voice-transcription",
+      "path": "skills/webdev-voice-transcription",
+      "risk_level": "medium",
+      "line_count": 34,
+      "word_count": 305,
+      "frontmatter": {
+        "name": "webdev-voice-transcription",
+        "description": "تحويل ملفات صوت المستخدم إلى نص في تطبيقات Manus WebDev الكاملة أو Expo عبر مساعد النسخ الصوتي المضمن. استخدمها بعد رفع ملف صوت مصرح به إلى رابط موثوق؛ ولا تستخدمها لتمرير ملف من العميل مباشرة أو لنسخ صوت لا يملك المستخدم حق معالجته."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "34 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    }
+  ]
+}
