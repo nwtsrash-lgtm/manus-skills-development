@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:03:34+00:00",
+  "generated_at": "2026-08-13T01:07:32+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
@@ -835,17 +835,17 @@
       "skill": "skill-creator",
       "path": "skills/skill-creator",
       "risk_level": "medium",
-      "line_count": 236,
-      "word_count": 1425,
+      "line_count": 68,
+      "word_count": 681,
       "frontmatter": {
         "name": "skill-creator",
-        "description": "Guide for creating or updating skills that extend Manus via specialized knowledge, workflows, or tool integrations. For any modification or improvement request, MUST first read this skill and follow its update workflow instead of editing files directly."
+        "description": "إنشاء وتطوير وتدقيق مهارات Manus القابلة لإعادة الاستخدام، بما يشمل التعليمات والموارد والاختبارات. استخدمها عند طلب إنشاء مهارة جديدة أو تعديل مهارة قائمة أو استيراد مهارة مجتمعية أو رفع جودة حزمة مهارات؛ واقرأها قبل تحرير أي ملف داخل مهارة."
       },
       "test_card": {
         "present": true,
         "valid": true,
         "issues": [],
-        "case_count": 4
+        "case_count": 5
       },
       "scores": {
         "structural_integrity": 15,
@@ -870,7 +870,7 @@
           "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "236 lines"
+          "68 lines"
         ],
         "verification": [
           "verification marker and valid test card"

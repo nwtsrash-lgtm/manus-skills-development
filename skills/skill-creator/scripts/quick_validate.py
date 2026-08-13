@@ -1,134 +1,136 @@
 #!/usr/bin/env python3
-"""
-Quick validation script for skills - minimal version
+"""Validate the structure and minimum operational readiness of one Manus skill.
 
 Usage:
-    quick_validate.py <skill-name>
-    quick_validate.py <absolute-path-to-skill>
-
-Examples:
-    quick_validate.py my-skill
-    quick_validate.py /home/ubuntu/skills/my-skill
-
-Skills are expected at /home/ubuntu/skills/<skill-name>/
+    quick_validate.py <skill-name-or-path> [--base-path PATH] [--json]
 """
+from __future__ import annotations
 
-import sys
+import argparse
+import json
 import re
-import yaml
+import sys
 from pathlib import Path
+from typing import Any
 
-SKILLS_BASE_PATH = Path("/home/ubuntu/skills")
+import yaml
 
-
-def resolve_skill_path(skill_path_or_name):
-    """
-    Resolve skill path to absolute path.
-    
-    If given an absolute path, use it directly.
-    If given a skill name or relative path, resolve it under SKILLS_BASE_PATH.
-    """
-    path = Path(skill_path_or_name)
-    
-    # If it's an absolute path, use it directly
-    if path.is_absolute():
-        return path
-    
-    # Otherwise, treat it as a skill name and look in SKILLS_BASE_PATH
-    return SKILLS_BASE_PATH / skill_path_or_name
+DEFAULT_BASE_PATH = Path("/home/ubuntu/skills")
+ALLOWED_PROPERTIES = {"name", "description", "license", "allowed-tools", "metadata"}
+FORBIDDEN_ROOT_FILES = {"README.md", "CHANGELOG.md", ".DS_Store"}
 
 
-def validate_skill(skill_path_or_name):
-    """Basic validation of a skill"""
-    skill_path = resolve_skill_path(skill_path_or_name)
+def resolve_skill_path(value: str, base_path: Path) -> Path:
+    path = Path(value)
+    return path if path.is_absolute() else base_path / path
 
-    # Check SKILL.md exists
-    skill_md = skill_path / 'SKILL.md'
-    if not skill_md.exists():
-        return False, "SKILL.md not found"
 
-    # Read and validate frontmatter
-    content = skill_md.read_text()
-    if not content.startswith('---'):
-        return False, "No YAML frontmatter found"
-
-    # Extract frontmatter
-    match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+def parse_frontmatter(content: str) -> tuple[dict[str, Any], str | None]:
+    match = re.match(r"^---\n(.*?)\n---(?:\n|$)", content, re.DOTALL)
     if not match:
-        return False, "Invalid frontmatter format"
-
-    frontmatter_text = match.group(1)
-
-    # Parse YAML frontmatter
+        return {}, "No valid YAML frontmatter found"
     try:
-        frontmatter = yaml.safe_load(frontmatter_text)
-        if not isinstance(frontmatter, dict):
-            return False, "Frontmatter must be a YAML dictionary"
-    except yaml.YAMLError as e:
-        return False, f"Invalid YAML in frontmatter: {e}"
+        value = yaml.safe_load(match.group(1))
+    except yaml.YAMLError as exc:
+        return {}, f"Invalid YAML frontmatter: {exc}"
+    if not isinstance(value, dict):
+        return {}, "Frontmatter must be a YAML mapping"
+    return value, None
 
-    # Define allowed properties
-    ALLOWED_PROPERTIES = {'name', 'description', 'license', 'allowed-tools', 'metadata'}
 
-    # Check for unexpected properties (excluding nested keys under metadata)
-    unexpected_keys = set(frontmatter.keys()) - ALLOWED_PROPERTIES
-    if unexpected_keys:
-        return False, (
-            f"Unexpected key(s) in SKILL.md frontmatter: {', '.join(sorted(unexpected_keys))}. "
-            f"Allowed properties are: {', '.join(sorted(ALLOWED_PROPERTIES))}"
-        )
+def relative_markdown_links(content: str) -> list[str]:
+    links = re.findall(r"\[[^\]]+\]\(([^)#]+)(?:#[^)]+)?\)", content)
+    return [link for link in links if not link.startswith(("http://", "https://", "mailto:"))]
 
-    # Check required fields
-    if 'name' not in frontmatter:
-        return False, "Missing 'name' in frontmatter"
-    if 'description' not in frontmatter:
-        return False, "Missing 'description' in frontmatter"
 
-    # Extract name for validation
-    name = frontmatter.get('name', '')
-    if not isinstance(name, str):
-        return False, f"Name must be a string, got {type(name).__name__}"
-    name = name.strip()
-    if name:
-        # Check naming convention (hyphen-case: lowercase with hyphens)
-        if not re.match(r'^[a-z0-9-]+$', name):
-            return False, f"Name '{name}' should be hyphen-case (lowercase letters, digits, and hyphens only)"
-        if name.startswith('-') or name.endswith('-') or '--' in name:
-            return False, f"Name '{name}' cannot start/end with hyphen or contain consecutive hyphens"
-        # Check name length (max 64 characters per spec)
+def validate_skill(skill_path_or_name: str, base_path: Path = DEFAULT_BASE_PATH) -> dict[str, Any]:
+    skill_path = resolve_skill_path(skill_path_or_name, base_path)
+    report: dict[str, Any] = {
+        "skill_path": str(skill_path),
+        "valid": False,
+        "errors": [],
+        "warnings": [],
+        "metrics": {},
+    }
+    skill_md = skill_path / "SKILL.md"
+    if not skill_md.is_file():
+        report["errors"].append("SKILL.md not found")
+        return report
+
+    content = skill_md.read_text(encoding="utf-8", errors="replace")
+    lines = content.splitlines()
+    report["metrics"]["line_count"] = len(lines)
+    frontmatter, frontmatter_error = parse_frontmatter(content)
+    if frontmatter_error:
+        report["errors"].append(frontmatter_error)
+        return report
+
+    unexpected = sorted(set(frontmatter) - ALLOWED_PROPERTIES)
+    if unexpected:
+        report["errors"].append("Unexpected frontmatter key(s): " + ", ".join(unexpected))
+
+    name = frontmatter.get("name")
+    if not isinstance(name, str) or not name.strip():
+        report["errors"].append("Missing or invalid 'name'")
+    else:
+        name = name.strip()
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
+            report["errors"].append("Name must use lowercase hyphen-case")
         if len(name) > 64:
-            return False, f"Name is too long ({len(name)} characters). Maximum is 64 characters."
+            report["errors"].append("Name exceeds 64 characters")
+        if name != skill_path.name:
+            report["errors"].append("Frontmatter name must match the skill directory")
 
-    # Extract and validate description
-    description = frontmatter.get('description', '')
-    if not isinstance(description, str):
-        return False, f"Description must be a string, got {type(description).__name__}"
-    description = description.strip()
-    if description:
-        # Check for angle brackets
-        if '<' in description or '>' in description:
-            return False, "Description cannot contain angle brackets (< or >)"
-        # Check description length (max 1024 characters per spec)
+    description = frontmatter.get("description")
+    if not isinstance(description, str) or not description.strip():
+        report["errors"].append("Missing or invalid 'description'")
+    else:
+        description = description.strip()
+        report["metrics"]["description_length"] = len(description)
+        if "<" in description or ">" in description:
+            report["errors"].append("Description cannot contain angle brackets")
         if len(description) > 1024:
-            return False, f"Description is too long ({len(description)} characters). Maximum is 1024 characters."
+            report["errors"].append("Description exceeds 1024 characters")
+        if len(description) < 40:
+            report["warnings"].append("Description is short; routing may be unreliable")
 
-    return True, "Skill is valid!"
+    if re.search(r"\[TODO:|^description:\s*[\"']?TODO\b", content, flags=re.IGNORECASE | re.MULTILINE):
+        report["errors"].append("Remove template TODO markers before delivery")
+    if len(lines) > 500:
+        report["warnings"].append("SKILL.md exceeds 500 lines; move variant-specific detail into references")
+
+    for filename in sorted(FORBIDDEN_ROOT_FILES):
+        if (skill_path / filename).exists():
+            report["errors"].append(f"Forbidden skill-root file: {filename}")
+
+    for target in sorted(set(relative_markdown_links(content))):
+        if not (skill_path / target).exists():
+            report["errors"].append(f"Broken relative link: {target}")
+
+    report["valid"] = not report["errors"]
+    return report
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("skill", help="Skill name relative to --base-path, or an absolute path")
+    parser.add_argument("--base-path", type=Path, default=DEFAULT_BASE_PATH)
+    parser.add_argument("--json", action="store_true", help="Print machine-readable JSON")
+    args = parser.parse_args()
+    report = validate_skill(args.skill, args.base_path)
+    if args.json:
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    else:
+        state = "PASS" if report["valid"] else "FAIL"
+        print(f"{state}: {report['skill_path']}")
+        for item in report["errors"]:
+            print(f"ERROR: {item}")
+        for item in report["warnings"]:
+            print(f"WARNING: {item}")
+        if report["valid"]:
+            print("Skill structure is valid.")
+    return 0 if report["valid"] else 1
+
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: quick_validate.py <skill-name>")
-        print("       quick_validate.py <absolute-path-to-skill>")
-        print("\nExamples:")
-        print("  quick_validate.py my-skill")
-        print("  quick_validate.py /home/ubuntu/skills/my-skill")
-        print(f"\nSkills are expected at {SKILLS_BASE_PATH}/<skill-name>/")
-        sys.exit(1)
-    
-    skill_input = sys.argv[1]
-    resolved_path = resolve_skill_path(skill_input)
-    
-    print(f"🔍 Validating skill at: {resolved_path}")
-    
-    valid, message = validate_skill(skill_input)
-    print(message)
-    sys.exit(0 if valid else 1)
+    sys.exit(main())

@@ -1,236 +1,68 @@
 ---
 name: skill-creator
-description: Guide for creating or updating skills that extend Manus via specialized knowledge, workflows, or tool integrations. For any modification or improvement request, MUST first read this skill and follow its update workflow instead of editing files directly.
+description: إنشاء وتطوير وتدقيق مهارات Manus القابلة لإعادة الاستخدام، بما يشمل التعليمات والموارد والاختبارات. استخدمها عند طلب إنشاء مهارة جديدة أو تعديل مهارة قائمة أو استيراد مهارة مجتمعية أو رفع جودة حزمة مهارات؛ واقرأها قبل تحرير أي ملف داخل مهارة.
 license: Complete terms in LICENSE.txt
 ---
 
-# Skill Creator
+# صانع المهارات
 
-This skill provides guidance for creating effective skills.
+## المبدأ
 
-## About Skills
+ابنِ مهارة عندما يتكرر مسار عمل أو معرفة إجرائية أو تكامل بحيث يفيد تثبيته في جلسات لاحقة. لا تنشئ مهارة من أجل مخرج واحد، أو لأن المستخدم طلب تنفيذ مهمة واحدة لا تتكرر. حافظ على النواة موجزة؛ أضف فقط المعرفة غير البديهية أو قواعد القرار التي تمنع خطأ عمليًا.
 
-Skills are modular, self-contained packages that extend Manus's capabilities by providing specialized knowledge, workflows, and tools. Think of them as "onboarding guides" for specific domains or tasks—they transform Manus from a general-purpose agent into a specialized agent equipped with procedural knowledge that no model can fully possess.
+تعامل مع كل مهارة على أنها منتج تشغيلي: لها نطاق استدعاء وحدود واضحة، وسير عمل، وموارد مبررة، وحالة فشل أو أمان، ودليل تحقق. راجع `references/skill-contract.md` عند التصميم، و`references/test-cards.md` عند إعداد السلوك المتوقع.
 
-### What Skills Provide
+## قرار الاستدعاء
 
-1. Specialized workflows - Multi-step procedures for specific domains
-2. Tool integrations - Instructions for working with specific file formats or APIs
-3. Domain expertise - Company-specific knowledge, schemas, business logic
-4. Bundled resources - Scripts, references, and assets for complex and repetitive tasks
+| الحالة | الإجراء |
+|---|---|
+| طلب إنشاء مهارة أو إعادة استخدام عملية متكررة | استخدم هذه المهارة واتبع الدورة كاملة. |
+| طلب تحسين مهارة قائمة | اقرأ ملفات المهارة ومواردها أولًا، ثم حدّد الفجوة والاختبار قبل التحرير. |
+| مهارة مجتمعية أو من GitHub | راجع الرخصة والمحتوى والبرامج قبل النسخ؛ لا تشغّل كودًا خارجيًا ولا تدمج تعليمات غير مبررة. |
+| مخرج واحد مثل تقرير أو تعديل ملف أو إجابة | نفّذ المهمة المناسبة ولا تنشئ مهارة. |
 
-## Core Principles
+## دورة التطوير
 
-### Concise is Key
+### 1. حدّد أمثلة الاستعمال والحدود
 
-The context window is a public good. Skills share the context window with everything else Manus needs: system prompt, conversation history, other Skills' metadata, and the actual user request.
+استخرج ثلاثة أمثلة إيجابية تمثل الطلبات التي يجب أن تستدعي المهارة، ومثالين سلبيين يوجهان إلى مهارة أخرى أو تنفيذ مباشر. اطلب مثالًا واحدًا ملموسًا فقط إن كانت وظيفة المهارة أو ناتجها غير معروفة؛ لا تبدأ باسم أو قالب عام.
 
-**Default assumption: Manus is already very smart.** Only add context Manus doesn't already have. Challenge each piece of information: "Does Manus really need this explanation?" and "Does this paragraph justify its token cost?"
+### 2. صمّم أصغر حزمة قابلة لإعادة الاستخدام
 
-Prefer concise examples over verbose explanations.
+اختر درجة الحرية المناسبة. استخدم تعليمات عامة عندما تختلف القرارات حسب السياق، وشبه كود أو نماذج قابلة للضبط عندما يوجد نمط مفضل، وبرنامجًا محددًا فقط إذا كانت العملية هشة أو متكررة حرفيًا. لا تضع برنامجًا أو قالبًا أو مرجعًا إلا إذا كانت المهارة تحتاجه في أكثر من حالة.
 
-### Set Appropriate Degrees of Freedom
+ضع العملية الأساسية في `SKILL.md`. انقل التفاصيل الطويلة والمتغيرة أو الخاصة بنوع معين إلى `references/`. ضع البرامج الحتمية القابلة للاختبار فقط في `scripts/`، وضع الأصول التي تُنسخ إلى المخرج في `templates/`. لا تكرر النص نفسه بين النواة والمراجع، ولا تضف `README.md` أو `CHANGELOG.md` داخل مجلد المهارة.
 
-Match the level of specificity to the task's fragility and variability:
+### 3. هيّئ المهارة
 
-**High freedom (text-based instructions)**: Use when multiple approaches are valid, decisions depend on context, or heuristics guide the approach.
-
-**Medium freedom (pseudocode or scripts with parameters)**: Use when a preferred pattern exists, some variation is acceptable, or configuration affects behavior.
-
-**Low freedom (specific scripts, few parameters)**: Use when operations are fragile and error-prone, consistency is critical, or a specific sequence must be followed.
-
-Think of Manus as exploring a path: a narrow bridge with cliffs needs specific guardrails (low freedom), while an open field allows many routes (high freedom).
-
-### Anatomy of a Skill
-
-Every skill consists of a required SKILL.md file and optional bundled resources:
-
-```
-skill-name/
-├── SKILL.md (required)
-│   ├── YAML frontmatter metadata (required)
-│   │   ├── name: (required)
-│   │   └── description: (required)
-│   └── Markdown instructions (required)
-└── Bundled Resources (optional)
-    ├── scripts/          - Executable code (Python/Bash/etc.)
-    ├── references/       - Documentation intended to be loaded into context as needed
-    └── templates/        - Files used in output (templates, icons, fonts, etc.)
-```
-
-#### SKILL.md (required)
-
-Every SKILL.md consists of:
-
-- **Frontmatter** (YAML): Contains `name` and `description` fields. These are the only fields that Manus reads to determine when the skill gets used, thus it is very important to be clear and comprehensive in describing what the skill is, and when it should be used.
-- **Body** (Markdown): Instructions and guidance for using the skill. Only loaded AFTER the skill triggers (if at all).
-
-#### Bundled Resources (optional)
-
-- **`scripts/`** - Executable code for repetitive or deterministic tasks (e.g., `rotate_pdf.py`). Token efficient, can run without loading into context.
-- **`references/`** - Documentation loaded as needed (schemas, API docs, policies). Keeps SKILL.md lean. For large files (>10k words), include grep patterns in SKILL.md.
-- **`templates/`** - Output assets not loaded into context (logos, fonts, boilerplate code).
-
-**Avoid duplication**: Information lives in SKILL.md OR references, not both.
-
-**Do NOT include**: README.md, CHANGELOG.md, or other auxiliary documentation. Skills are for AI agents, not users.
-
-### Progressive Disclosure
-
-Three-level loading system:
-1. **Metadata** - Always in context (~100 words)
-2. **SKILL.md body** - When skill triggers (<500 lines)
-3. **Bundled resources** - As needed
-
-Keep SKILL.md under 500 lines. When splitting content to references, clearly describe when to read them.
-
-**Key principle:** Keep core workflow in SKILL.md; move variant-specific details to reference files.
-
-Example structure for multi-domain skills:
-
-```
-bigquery-skill/
-├── SKILL.md (overview + navigation)
-└── references/
-    ├── finance.md
-    ├── sales.md
-    └── product.md
-```
-
-Manus only loads the relevant reference file when needed.
-
-## Skill Creation Process
-
-Skill creation involves these steps:
-
-1. Understand the skill with concrete examples
-2. Plan reusable skill contents (scripts, references, templates)
-3. Initialize the skill (run init_skill.py)
-4. Edit the skill (implement resources and write SKILL.md)
-5. Deliver the skill (send SKILL.md path via notify_user)
-6. Iterate based on real usage
-
-Follow these steps in order, skipping only if there is a clear reason why they are not applicable.
-
-### Step 1: Understanding the Skill with Concrete Examples
-
-Skip this step only when the skill's usage patterns are already clearly understood.
-
-Gather concrete examples of how the skill will be used. Ask questions like:
-- "What functionality should this skill support?"
-- "Can you give examples of how it would be used?"
-
-Avoid asking too many questions at once. Conclude when you have a clear sense of the functionality.
-
-### Step 2: Planning the Reusable Skill Contents
-
-For each example, identify reusable resources:
-
-| Resource Type | When to Use                     | Example                               |
-| ------------- | ------------------------------- | ------------------------------------- |
-| `scripts/`    | Code rewritten repeatedly       | `rotate_pdf.py` for PDF rotation      |
-| `templates/`  | Same boilerplate each time      | HTML/React starter for webapp builder |
-| `references/` | Documentation needed repeatedly | Database schemas for BigQuery skill   |
-
-### Step 3: Initializing the Skill
-
-At this point, it is time to actually create the skill.
-
-Skip this step only if the skill being developed already exists, and iteration or packaging is needed. In this case, continue to the next step.
-
-When creating a new skill from scratch, always run the `init_skill.py` script. The script conveniently generates a new template skill directory that automatically includes everything a skill requires, making the skill creation process much more efficient and reliable.
-
-Usage:
+استخدم `scripts/init_skill.py` لإنشاء المجلد والقالب النظيف. مرّر `--base-path` عند العمل داخل مستودع، واستعمل `--with references,scripts,templates` فقط للدلائل التي ثبتت الحاجة إليها. لا تسلّم قالبًا يحوي `TODO` أو ملفات مثال غير مستخدمة.
 
 ```bash
-python /home/ubuntu/skills/skill-creator/scripts/init_skill.py <skill-name>
+python scripts/init_skill.py <skill-name> --base-path <skills-root> --with references
 ```
 
-The script:
+### 4. اكتب التعليمات والموارد
 
-- Creates the skill directory at `/home/ubuntu/skills/<skill-name>/`
-- Generates a SKILL.md template with proper frontmatter and TODO placeholders
-- Creates example resource directories: `scripts/`, `references/`, and `templates/`
-- Adds example files in each directory that can be customized or deleted
+اكتب بصيغة الأمر أو المصدر. اجعل الوصف في Frontmatter يبين **ماذا تفعل المهارة ومتى تستخدم**؛ فهو آلية التوجيه الأساسية. اذكر ما يجب جمعه قبل التنفيذ، ونقاط القرار، وطريقة التحقق، والتصرف الآمن عند نقص مدخل أو فشل تبعية أو وجود إجراء حساس.
 
-After initialization, customize or remove the generated SKILL.md and example files as needed.
+استخدم الروابط النسبية للموارد. اختبر كل برنامج جديد أو معدل على حالة تمثيلية قبل إضافته. لا تضع أسرارًا أو رموز وصول أو بيانات مستخدم حقيقية في الأمثلة أو الاختبارات.
 
-### Step 4: Edit the Skill
+### 5. أضف بطاقة سلوك
 
-When editing the (newly-generated or existing) skill, remember that the skill is being created for another instance of Manus to use. Include information that would be beneficial and non-obvious to Manus. Consider what procedural knowledge, domain-specific details, or reusable assets would help another Manus instance execute these tasks more effectively.
+أنشئ بطاقة اختبار وفق `references/test-cards.md`. يجب أن تتضمن، كحد أدنى، حالة استدعاء صحيحة وحالة عدم استدعاء وحالة فشل أو أمان. زد الحالات للمهارات التي تتعامل مع API أو الهوية أو التخزين أو الجدولة أو النشر أو إجراءات خارجية.
 
-#### Learn Proven Design Patterns
+### 6. تحقّق ثم سلّم
 
-Consult these helpful guides based on your skill's needs:
-
-- **Multi-step processes**: See `/home/ubuntu/skills/skill-creator/references/workflows.md` for sequential workflows and conditional logic
-- **Output formats or quality standards**: See `/home/ubuntu/skills/skill-creator/references/output-patterns.md` for template and example patterns
-- **Progressive Disclosure Patterns**: See `/home/ubuntu/skills/skill-creator/references/progressive-disclosure-patterns.md` for splitting content across files.
-
-These files contain established best practices for effective skill design.
-
-#### Start with Reusable Skill Contents
-
-Begin with the `scripts/`, `references/`, and `templates/` files identified in Step 2. This may require user input (e.g., brand assets for `templates/`, documentation for `references/`).
-
-Test added scripts by running them to ensure they work correctly. For many similar scripts, test a representative sample.
-
-Delete any unused example files from initialization.
-
-#### Update SKILL.md
-
-**Writing Guidelines:** Always use imperative/infinitive form.
-
-##### Frontmatter
-
-Write the YAML frontmatter with `name` and `description`:
-
-- `name`: The skill name
-- `description`: Primary trigger mechanism. Must include what the skill does AND when to use it (body only loads after triggering).
-  - Example: "Document creation and editing with tracked changes. Use for: creating .docx files, modifying content, working with tracked changes."
-
-##### Body
-
-Write instructions for using the skill and its bundled resources.
-
-### Step 5: Delivering the Skill
-
-Once development of the skill is complete, validate and deliver it to the user.
-
-#### Validate the Skill
-
-Run the validation script to ensure the skill meets all requirements:
+شغّل المدقق على المسار الفعلي للمهارة، وأصلح الأخطاء قبل التسليم. راجع تحذير الطول والروابط والموارد غير المستخدمة، ثم نفّذ حالات البطاقة أو اختبارًا مكافئًا. قدّم ما تغيّر، والدليل على النجاح، وأي فرضية أو قيد متبقٍ.
 
 ```bash
-python /home/ubuntu/skills/skill-creator/scripts/quick_validate.py <skill-name>
+python scripts/quick_validate.py <skill-path> --json
 ```
 
-If validation fails, fix the errors and run validation again.
+## معايير القبول
 
-#### Deliver to User
+تكون المهارة جاهزة عندما يطابق الاسم اسم المجلد، ويحتوي Frontmatter على وصف صحيح، ولا تحوي النواة علامات TODO أو روابط مكسورة، ويستطيع القارئ اختيارها أو استبعادها من أمثلة واضحة، وتوجد طريقة للتحقق من المخرج أو التنفيذ. قسّم النواة التي تتجاوز 500 سطر إلى مراجع أو سجّل سببًا استثنائيًا قبل اعتمادها.
 
-Use `message` tool to send the SKILL.md file as attachment:
+## تحسين مهارة قائمة
 
-```
-/home/ubuntu/skills/{skill-name}/SKILL.md
-```
-
-The system will automatically:
-
-1. Detect the path pattern `/home/ubuntu/skills/*/SKILL.md`
-2. Package the skill directory into a `.skill` file
-3. Send to frontend as a special card with options:
-   - Add to My Skills
-   - Download
-   - Preview
-
-### Step 6: Iterate
-
-After testing the skill, users may request improvements. Often this happens right after using the skill, with fresh context of how the skill performed.
-
-**Iteration workflow:**
-
-1. Use the skill on real tasks
-2. Notice struggles or inefficiencies
-3. Identify how SKILL.md or bundled resources should be updated
-4. Implement changes and test again
+لا تعدّل مباشرة. افهم أولًا ما الذي يستدعي المهارة حاليًا، ومن يعتمد على مواردها، وما السلوك الذي يجب ألا ينكسر. أضف أو حدّث حالة اختبار قبل تغيير حدود الاستدعاء أو الأمان أو التكامل. اجعل التغيير صغيرًا وقابلًا للتراجع، ثم شغّل المدقق واختبر الحالة التي حفزت التحسين.

@@ -1,305 +1,111 @@
 #!/usr/bin/env python3
-"""
-Skill Initializer - Creates a new skill from template
+"""Initialize a clean Manus skill directory.
 
 Usage:
-    init_skill.py <skill-name>
+    init_skill.py <skill-name> [--base-path PATH] [--with references,scripts,templates]
 
-Examples:
-    init_skill.py my-new-skill
-    init_skill.py my-api-helper
-
-Skills are created at /home/ubuntu/skills/<skill-name>/
+The initializer creates only the requested resource directories and never inserts
+placeholder scripts or template files that could be shipped accidentally.
 """
+from __future__ import annotations
 
+import argparse
+import re
 import sys
 from pathlib import Path
 
+DEFAULT_BASE_PATH = Path("/home/ubuntu/skills")
+VALID_RESOURCE_DIRS = {"references", "scripts", "templates"}
 
 SKILL_TEMPLATE = """---
 name: {skill_name}
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: "TODO: State what this skill does and the concrete requests that should trigger it."
 ---
 
 # {skill_title}
 
-## Overview
+## Goal
 
-[TODO: 1-2 sentences explaining what this skill enables]
+Describe the reusable outcome this skill enables.
 
-## Structuring This Skill
+## When to use
 
-[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
+State the positive trigger conditions and at least one adjacent request that should use another skill instead.
 
-**1. Workflow-Based** (best for sequential processes)
-- Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" → "Reading" → "Creating" → "Editing"
-- Structure: ## Overview → ## Workflow Decision Tree → ## Step 1 → ## Step 2...
+## Workflow
 
-**2. Task-Based** (best for tool collections)
-- Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" → "Merge PDFs" → "Split PDFs" → "Extract Text"
-- Structure: ## Overview → ## Quick Start → ## Task Category 1 → ## Task Category 2...
-
-**3. Reference/Guidelines** (best for standards or specifications)
-- Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" → "Colors" → "Typography" → "Features"
-- Structure: ## Overview → ## Guidelines → ## Specifications → ## Usage...
-
-**4. Capabilities-Based** (best for integrated systems)
-- Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" → numbered capability list
-- Structure: ## Overview → ## Core Capabilities → ### 1. Feature → ### 2. Feature...
-
-Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
-
-Delete this entire "Structuring This Skill" section when done - it's just guidance.]
-
-## [TODO: Replace with the first main section based on chosen structure]
-
-[TODO: Add content here. See examples in existing skills:
-- Code samples for technical skills
-- Decision trees for complex workflows
-- Concrete examples with realistic user requests
-- References to scripts/templates/references as needed]
+1. Gather only the inputs required to begin safely.
+2. Apply the domain-specific process.
+3. Verify the outcome and state the safe next action if verification fails.
 
 ## Resources
 
-This skill includes example resource directories that demonstrate how to organize different types of bundled resources:
-
-### scripts/
-Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
-
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
-
-**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
-
-**Note:** Scripts may be executed without loading into context, but can still be read by Manus for patching or environment adjustments.
-
-### references/
-Documentation and reference material intended to be loaded into context to inform Manus's process and thinking.
-
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
-
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Manus should reference while working.
-
-### templates/
-Files not intended to be loaded into context, but rather used within the output Manus produces.
-
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
-
-**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
-
----
-
-**Any unneeded directories can be deleted.** Not every skill requires all three types of resources.
-"""
-
-EXAMPLE_SCRIPT = '''#!/usr/bin/env python3
-"""
-Example helper script for {skill_name}
-
-This is a placeholder script that can be executed directly.
-Replace with actual implementation or delete if not needed.
-
-Example real scripts from other skills:
-- pdf/scripts/fill_fillable_fields.py - Fills PDF form fields
-- pdf/scripts/convert_pdf_to_images.py - Converts PDF pages to images
-"""
-
-def main():
-    print("This is an example script for {skill_name}")
-    # TODO: Add actual script logic here
-    # This could be data processing, file conversion, API calls, etc.
-
-if __name__ == "__main__":
-    main()
-'''
-
-EXAMPLE_REFERENCE = """# Reference Documentation for {skill_title}
-
-This is a placeholder for detailed reference documentation.
-Replace with actual reference content or delete if not needed.
-
-Example real reference docs from other skills:
-- product-management/references/communication.md - Comprehensive guide for status updates
-- product-management/references/context_building.md - Deep-dive on gathering context
-- bigquery/references/ - API references and query examples
-
-## When Reference Docs Are Useful
-
-Reference docs are ideal for:
-- Comprehensive API documentation
-- Detailed workflow guides
-- Complex multi-step processes
-- Information too lengthy for main SKILL.md
-- Content that's only needed for specific use cases
-
-## Structure Suggestions
-
-### API Reference Example
-- Overview
-- Authentication
-- Endpoints with examples
-- Error codes
-- Rate limits
-
-### Workflow Guide Example
-- Prerequisites
-- Step-by-step instructions
-- Common patterns
-- Troubleshooting
-- Best practices
-"""
-
-EXAMPLE_TEMPLATE = """# Example Template File
-
-This placeholder represents where template files would be stored.
-Replace with actual template files (templates, images, fonts, etc.) or delete if not needed.
-
-Template files are NOT intended to be loaded into context, but rather used within
-the output Manus produces.
-
-Example template files from other skills:
-- Brand guidelines: logo.png, slides_template.pptx
-- Frontend builder: hello-world/ directory with HTML/React boilerplate
-- Typography: custom-font.ttf, font-family.woff2
-- Data: sample_data.csv, test_dataset.json
-
-## Common Template Types
-
-- Templates: .pptx, .docx, boilerplate directories
-- Images: .png, .jpg, .svg, .gif
-- Fonts: .ttf, .otf, .woff, .woff2
-- Boilerplate code: Project directories, starter files
-- Icons: .ico, .svg
-- Data files: .csv, .json, .xml, .yaml
-
-Note: This is a text placeholder. Actual templates can be any file type.
+Add only the references, scripts, or templates that are repeatedly needed. Remove this section if no bundled resource is required.
 """
 
 
-def title_case_skill_name(skill_name):
-    """Convert hyphenated skill name to Title Case for display."""
-    return ' '.join(word.capitalize() for word in skill_name.split('-'))
+def title_case(name: str) -> str:
+    return " ".join(part.capitalize() for part in name.split("-"))
 
 
-SKILLS_BASE_PATH = "/home/ubuntu/skills"
+def validate_name(name: str) -> str | None:
+    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
+        return "Skill name must use lowercase hyphen-case"
+    if len(name) > 64:
+        return "Skill name must not exceed 64 characters"
+    return None
 
 
-def init_skill(skill_name):
-    """
-    Initialize a new skill directory with template SKILL.md.
+def parse_resources(raw: str) -> set[str]:
+    if not raw.strip():
+        return set()
+    values = {value.strip() for value in raw.split(",") if value.strip()}
+    invalid = values - VALID_RESOURCE_DIRS
+    if invalid:
+        raise ValueError("Unsupported resource directories: " + ", ".join(sorted(invalid)))
+    return values
 
-    Args:
-        skill_name: Name of the skill
 
-    Returns:
-        Path to created skill directory, or None if error
-    """
-    # Determine skill directory path
-    skill_dir = Path(SKILLS_BASE_PATH) / skill_name
-
-    # Check if directory already exists
+def init_skill(skill_name: str, base_path: Path, resources: set[str]) -> Path:
+    name_error = validate_name(skill_name)
+    if name_error:
+        raise ValueError(name_error)
+    skill_dir = base_path / skill_name
     if skill_dir.exists():
-        print(f"❌ Error: Skill directory already exists: {skill_dir}")
-        return None
+        raise FileExistsError(f"Skill directory already exists: {skill_dir}")
 
-    # Create skill directory
-    try:
-        skill_dir.mkdir(parents=True, exist_ok=False)
-        print(f"✅ Created skill directory: {skill_dir}")
-    except Exception as e:
-        print(f"❌ Error creating directory: {e}")
-        return None
-
-    # Create SKILL.md from template
-    skill_title = title_case_skill_name(skill_name)
-    skill_content = SKILL_TEMPLATE.format(
-        skill_name=skill_name,
-        skill_title=skill_title
+    skill_dir.mkdir(parents=True, exist_ok=False)
+    (skill_dir / "SKILL.md").write_text(
+        SKILL_TEMPLATE.format(skill_name=skill_name, skill_title=title_case(skill_name)),
+        encoding="utf-8",
     )
-
-    skill_md_path = skill_dir / 'SKILL.md'
-    try:
-        skill_md_path.write_text(skill_content)
-        print("✅ Created SKILL.md")
-    except Exception as e:
-        print(f"❌ Error creating SKILL.md: {e}")
-        return None
-
-    # Create resource directories with example files
-    try:
-        # Create scripts/ directory with example script
-        scripts_dir = skill_dir / 'scripts'
-        scripts_dir.mkdir(exist_ok=True)
-        example_script = scripts_dir / 'example.py'
-        example_script.write_text(EXAMPLE_SCRIPT.format(skill_name=skill_name))
-        example_script.chmod(0o755)
-        print("✅ Created scripts/example.py")
-
-        # Create references/ directory with example reference doc
-        references_dir = skill_dir / 'references'
-        references_dir.mkdir(exist_ok=True)
-        example_reference = references_dir / 'api_reference.md'
-        example_reference.write_text(EXAMPLE_REFERENCE.format(skill_title=skill_title))
-        print("✅ Created references/api_reference.md")
-
-        # Create templates/ directory with example template placeholder
-        templates_dir = skill_dir / 'templates'
-        templates_dir.mkdir(exist_ok=True)
-        example_template = templates_dir / 'example_template.txt'
-        example_template.write_text(EXAMPLE_TEMPLATE)
-        print("✅ Created templates/example_template.txt")
-    except Exception as e:
-        print(f"❌ Error creating resource directories: {e}")
-        return None
-
-    # Print next steps
-    print(f"\n✅ Skill '{skill_name}' initialized successfully at {skill_dir}")
-    print("\nNext steps:")
-    print("1. Edit SKILL.md to complete the TODO items and update the description")
-    print("2. Customize or delete the example files in scripts/, references/, and templates/")
-    print("3. Run the validator when ready to check the skill structure")
-
+    for resource in sorted(resources):
+        (skill_dir / resource).mkdir()
     return skill_dir
 
 
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: init_skill.py <skill-name>")
-        print("\nSkill name requirements:")
-        print("  - Hyphen-case identifier (e.g., 'data-analyzer')")
-        print("  - Lowercase letters, digits, and hyphens only")
-        print("  - Max 64 characters")
-        print("  - Must match directory name exactly")
-        print("\nExamples:")
-        print("  init_skill.py my-new-skill")
-        print("  init_skill.py my-api-helper")
-        print(f"\nSkills are created at {SKILLS_BASE_PATH}/<skill-name>/")
-        sys.exit(1)
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("skill_name", help="Lowercase hyphen-case skill identifier")
+    parser.add_argument("--base-path", type=Path, default=DEFAULT_BASE_PATH)
+    parser.add_argument(
+        "--with",
+        dest="resources",
+        default="",
+        help="Comma-separated optional directories: references,scripts,templates",
+    )
+    args = parser.parse_args()
+    try:
+        resources = parse_resources(args.resources)
+        skill_dir = init_skill(args.skill_name, args.base_path, resources)
+    except (ValueError, FileExistsError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
 
-    skill_name = sys.argv[1]
-
-    print(f"🚀 Initializing skill: {skill_name}")
-    print(f"   Location: {SKILLS_BASE_PATH}/{skill_name}")
-    print()
-
-    result = init_skill(skill_name)
-
-    if result:
-        sys.exit(0)
-    else:
-        sys.exit(1)
+    print(f"Created {skill_dir}")
+    print("Next: replace TODO text, add only needed resources, then run quick_validate.py.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
