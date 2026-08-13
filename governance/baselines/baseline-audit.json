@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:54:05+00:00",
+  "generated_at": "2026-08-13T01:55:04+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 26,
-    "needs_work_count": 7
+    "approved_count": 27,
+    "needs_work_count": 6
   },
   "skills": [
     {
@@ -284,40 +284,38 @@
         "description": "Best practices for using the gws CLI with supported Google Workspace services (Drive, Docs, Sheets, Slides). Use when performing any operation with the gws CLI."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 5
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 55,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
           "88 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -326,11 +324,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "imagegen",
