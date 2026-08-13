@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:56:09+00:00",
+  "generated_at": "2026-08-13T01:57:11+00:00",
   "policy": "Operational quality is prioritized over ownership metadata. Refresh source-sensitive skills in their relevant development wave.",
   "skills": [
     {
@@ -251,7 +251,7 @@
       "path": "skills/webdev-readme-fullstack",
       "risk_level": "medium",
       "status": "needs_work",
-      "baseline_score": 40,
+      "baseline_score": 75,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-readme-fullstack.json"
     },
@@ -260,7 +260,7 @@
       "path": "skills/webdev-readme-mobile",
       "risk_level": "medium",
       "status": "needs_work",
-      "baseline_score": 40,
+      "baseline_score": 75,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-readme-mobile.json"
     },
@@ -269,7 +269,7 @@
       "path": "skills/webdev-readme-mobile-backend",
       "risk_level": "medium",
       "status": "needs_work",
-      "baseline_score": 40,
+      "baseline_score": 75,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-readme-mobile-backend.json"
     },
@@ -278,7 +278,7 @@
       "path": "skills/webdev-readme-static",
       "risk_level": "medium",
       "status": "needs_work",
-      "baseline_score": 40,
+      "baseline_score": 75,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-readme-static.json"
     },
@@ -286,8 +286,8 @@
       "name": "webdev-ssr-conversion",
       "path": "skills/webdev-ssr-conversion",
       "risk_level": "medium",
-      "status": "needs_work",
-      "baseline_score": 55,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-ssr-conversion.json"
     },

@@ -1,8 +1,8 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T01:56:09+00:00`
+Generated: `2026-08-13T01:57:11+00:00`
 
-The audit inspected **33** skills. **28** passed all current gates; the remainder form the development backlog.
+The audit inspected **33** skills. **29** passed all current gates; the remainder form the development backlog.
 
 | Skill | Risk | Lines | Score | Status | First actionable gap |
 |---|---|---:|---:|---|---|
@@ -33,11 +33,11 @@ The audit inspected **33** skills. **28** passed all current gates; the remainde
 | `webdev-maps-integration` | high | 29 | 90/100 | approved | None |
 | `webdev-owner-notifications` | high | 24 | 90/100 | approved | None |
 | `webdev-periodic-updates` | high | 275 | 90/100 | approved | None |
-| `webdev-readme-fullstack` | medium | 854 | 40/100 | needs_work | 854 lines exceeds 500; split or record an exception |
-| `webdev-readme-mobile` | medium | 919 | 40/100 | needs_work | 919 lines exceeds 500; split or record an exception |
-| `webdev-readme-mobile-backend` | medium | 1328 | 40/100 | needs_work | 1328 lines exceeds 500; split or record an exception |
-| `webdev-readme-static` | medium | 693 | 40/100 | needs_work | 693 lines exceeds 500; split or record an exception |
-| `webdev-ssr-conversion` | medium | 105 | 55/100 | needs_work | invocation: test card is missing |
+| `webdev-readme-fullstack` | medium | 854 | 75/100 | needs_work | 854 lines exceeds 500; split or record an exception |
+| `webdev-readme-mobile` | medium | 919 | 75/100 | needs_work | 919 lines exceeds 500; split or record an exception |
+| `webdev-readme-mobile-backend` | medium | 1328 | 75/100 | needs_work | 1328 lines exceeds 500; split or record an exception |
+| `webdev-readme-static` | medium | 693 | 75/100 | needs_work | 693 lines exceeds 500; split or record an exception |
+| `webdev-ssr-conversion` | medium | 105 | 90/100 | approved | None |
 | `webdev-voice-transcription` | medium | 34 | 90/100 | approved | None |
 
 ## Interpretation
