@@ -18,10 +18,11 @@
 | Visual-routing and game-development behavior coverage | Complete and approved |
 | Text-to-speech prompt behavior coverage | Complete and approved |
 | Music-prompt behavior coverage | Complete and approved |
+| Special-image reading behavior coverage | Complete and approved |
 
 ## Current measurement
 
-The latest audit records **23 approved skills out of 33**. Remaining skills require the same review cycle: confirm scope, add or refine behavior cards, address explicit workflow/verification/safety gaps, validate, and re-run the audit. A `needs_work` status is a backlog signal, not evidence that the existing skill is unusable.
+The latest audit records **24 approved skills out of 33**. Remaining skills require the same review cycle: confirm scope, add or refine behavior cards, address explicit workflow/verification/safety gaps, validate, and re-run the audit. A `needs_work` status is a backlog signal, not evidence that the existing skill is unusable.
 
 ## Remaining release work
 
