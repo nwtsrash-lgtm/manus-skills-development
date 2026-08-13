@@ -1,6 +1,6 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T01:51:19+00:00`
+Generated: `2026-08-13T01:51:32+00:00`
 
 The audit inspected **33** skills. **23** passed all current gates; the remainder form the development backlog.
 
@@ -19,7 +19,7 @@ The audit inspected **33** skills. **23** passed all current gates; the remainde
 | `manus-pptx` | low | 279 | 45/100 | needs_work | invocation: test card is missing |
 | `music-prompter` | low | 139 | 90/100 | approved | None |
 | `persistent-computing` | high | 102 | 90/100 | approved | None |
-| `read-special-images` | medium | 73 | 80/100 | needs_work | None |
+| `read-special-images` | medium | 80 | 80/100 | needs_work | None |
 | `skill-creator` | medium | 68 | 90/100 | approved | None |
 | `systematic-debugging` | medium | 60 | 90/100 | approved | None |
 | `tts-prompter` | low | 251 | 90/100 | approved | None |

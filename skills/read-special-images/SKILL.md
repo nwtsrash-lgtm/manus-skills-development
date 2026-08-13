@@ -71,3 +71,10 @@ Extract or interpret image content at a readable scale, preserve reading order, 
 ## Verification and uncertainty
 
 Check each crop at a readable scale and retain its coordinates when assembling a result. If a value remains blurred, clipped, or ambiguous after the appropriate crop and OCR attempt, report it as unreadable rather than infer it. Preserve the source image, avoid exposing sensitive details in diagnostic artifacts, and ask for a clearer source when accuracy matters.
+
+## Workflow
+
+1. Inspect the source dimensions and identify whether full-image viewing loses readable detail.
+2. Split only the regions that need higher readable scale, preserving overlap and coordinates.
+3. Read or OCR each region, reconcile overlaps, and retain uncertainty markers.
+4. Verify the assembled result against the source before reporting it.

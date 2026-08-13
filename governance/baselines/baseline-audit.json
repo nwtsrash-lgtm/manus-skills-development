@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:51:19+00:00",
+  "generated_at": "2026-08-13T01:51:32+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
@@ -719,8 +719,8 @@
       "skill": "read-special-images",
       "path": "skills/read-special-images",
       "risk_level": "medium",
-      "line_count": 73,
-      "word_count": 656,
+      "line_count": 80,
+      "word_count": 708,
       "frontmatter": {
         "name": "read-special-images",
         "description": "Read and OCR unusually tall, wide, high-resolution, or text-dense images without hallucinating content lost to inline vision scaling. Use for long screenshots, panoramic images, large diagrams, dense documents, tiny unreadable text, or any image whose whole-image preview is not reliable; keep ordinary readable images unsplit."
@@ -754,7 +754,7 @@
           "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "73 lines"
+          "80 lines"
         ],
         "verification": [
           "verification marker and valid test card"
