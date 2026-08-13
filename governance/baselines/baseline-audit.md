@@ -1,8 +1,8 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T01:55:04+00:00`
+Generated: `2026-08-13T01:56:09+00:00`
 
-The audit inspected **33** skills. **27** passed all current gates; the remainder form the development backlog.
+The audit inspected **33** skills. **28** passed all current gates; the remainder form the development backlog.
 
 | Skill | Risk | Lines | Score | Status | First actionable gap |
 |---|---|---:|---:|---|---|
@@ -16,7 +16,7 @@ The audit inspected **33** skills. **27** passed all current gates; the remainde
 | `intelligent-free-cloud-architect` | medium | 154 | 90/100 | approved | None |
 | `manus-api` | high | 72 | 90/100 | approved | None |
 | `manus-config` | high | 253 | 90/100 | approved | None |
-| `manus-pptx` | low | 279 | 45/100 | needs_work | invocation: test card is missing |
+| `manus-pptx` | low | 286 | 90/100 | approved | None |
 | `music-prompter` | low | 139 | 90/100 | approved | None |
 | `persistent-computing` | high | 102 | 90/100 | approved | None |
 | `read-special-images` | medium | 84 | 90/100 | approved | None |

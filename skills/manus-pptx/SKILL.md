@@ -277,3 +277,10 @@ Child tag `<series name? values color? label-expr? labels? type? axis?>`:
 6. Arrays separated with spaces (should be commas); compound values separated with commas (should be spaces); commas inside category names / series labels; commas inside a font `family`/`font` (fallback lists unsupported, write a single Google Fonts name)
 7. A content element without an `id`, or the same element `id` used twice within one slide
 8. `dir`/`lang` misplaced: on `<ul>`/`<ol>` (put them on `<li>` items or the parent `<text>`), on `<tr>`/`<td>` (use the `<table>` attribute or `<p dir>`/`<p lang>` inside the cell), `dir` on inline tags other than `<span>` (wrap the segment in `<span dir>` instead), `lang` on any inline tag (no inline form — use the parent block), or `dir="auto"` (only `ltr`/`rtl` exist)
+
+## Workflow
+
+1. Define the slide count, audience, required editable elements, and asset list before authoring markup.
+2. Build one slide at a time with explicit dimensions, text hierarchy, and stable asset references.
+3. Validate the markup and inspect rendered slides for overflow, clipping, and missing assets.
+4. Export only after the editable and rendered forms both match the intended structure.
