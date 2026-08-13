@@ -1,8 +1,8 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T03:08:29+00:00`
+Generated: `2026-08-13T03:09:44+00:00`
 
-The audit inspected **33** skills. **30** passed all current gates; the remainder form the development backlog.
+The audit inspected **33** skills. **32** passed all current gates; the remainder form the development backlog.
 
 | Skill | Risk | Lines | Score | Status | First actionable gap |
 |---|---|---:|---:|---|---|
@@ -34,8 +34,8 @@ The audit inspected **33** skills. **30** passed all current gates; the remainde
 | `webdev-owner-notifications` | high | 24 | 90/100 | approved | None |
 | `webdev-periodic-updates` | high | 275 | 90/100 | approved | None |
 | `webdev-readme-fullstack` | medium | 37 | 90/100 | approved | None |
-| `webdev-readme-mobile` | medium | 919 | 75/100 | needs_work | 919 lines exceeds 500; split or record an exception |
-| `webdev-readme-mobile-backend` | medium | 1328 | 75/100 | needs_work | 1328 lines exceeds 500; split or record an exception |
+| `webdev-readme-mobile` | medium | 36 | 90/100 | approved | None |
+| `webdev-readme-mobile-backend` | medium | 36 | 90/100 | approved | None |
 | `webdev-readme-static` | medium | 693 | 75/100 | needs_work | 693 lines exceeds 500; split or record an exception |
 | `webdev-ssr-conversion` | medium | 105 | 90/100 | approved | None |
 | `webdev-voice-transcription` | medium | 34 | 90/100 | approved | None |

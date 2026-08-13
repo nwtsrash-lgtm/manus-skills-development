@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T03:08:29+00:00",
+  "generated_at": "2026-08-13T03:09:44+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 30,
-    "needs_work_count": 3
+    "approved_count": 32,
+    "needs_work_count": 1
   },
   "skills": [
     {
@@ -1496,11 +1496,11 @@
       "skill": "webdev-readme-mobile",
       "path": "skills/webdev-readme-mobile",
       "risk_level": "medium",
-      "line_count": 919,
-      "word_count": 3419,
+      "line_count": 36,
+      "word_count": 330,
       "frontmatter": {
         "name": "webdev-readme-mobile",
-        "description": "Manus webdev mobile-app (Expo) projects — the complete development guide for the Expo template that mobile-app projects are built on. Covers what ships out of the box, Expo conventions, design and branding rules, file layout, and where the backend guide lives. The same guide arrives auto-injected in webdev_init_project / webdev_add_feature results."
+        "description": "دليل تشغيل قالب Manus WebDev Mobile المبني على Expo وReact Native. استخدمه عند بناء أو تعديل تطبيق هاتف؛ ولا تستخدمه لموقع ويب فقط أو لخلفية API تفصيلية أو لخدمة خادمية خارج التطبيق."
       },
       "test_card": {
         "present": true,
@@ -1512,14 +1512,14 @@
         "structural_integrity": 15,
         "invocation_boundaries": 15,
         "workflow": 20,
-        "progressive_disclosure": 0,
+        "progressive_disclosure": 15,
         "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 75,
+      "score": 90,
       "mandatory_gates_passed": true,
-      "status": "needs_work",
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
@@ -1531,7 +1531,7 @@
           "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "919 lines exceeds 500; split or record an exception"
+          "36 lines"
         ],
         "verification": [
           "verification marker and valid test card"
@@ -1543,19 +1543,17 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "919 lines exceeds 500; split or record an exception"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-readme-mobile-backend",
       "path": "skills/webdev-readme-mobile-backend",
       "risk_level": "medium",
-      "line_count": 1328,
-      "word_count": 4951,
+      "line_count": 36,
+      "word_count": 330,
       "frontmatter": {
         "name": "webdev-readme-mobile-backend",
-        "description": "Manus webdev mobile-app (Expo) projects — backend development guide (Manus auth, database/Drizzle, tRPC API, env, testing, integrations). MUST read BEFORE using any backend/server/database features in a mobile-app project."
+        "description": "دليل خلفية تطبيقات Manus WebDev Mobile التي تحتاج مصادقة وقاعدة بيانات وtRPC وملفات أو تكاملات خادمية. استخدمه عند بناء أو تعديل طبقة بيانات أو API لتطبيق Expo؛ ولا تستخدمه لتنسيق واجهة هاتف فقط أو لموقع ثابت بلا خادم."
       },
       "test_card": {
         "present": true,
@@ -1567,14 +1565,14 @@
         "structural_integrity": 15,
         "invocation_boundaries": 15,
         "workflow": 20,
-        "progressive_disclosure": 0,
+        "progressive_disclosure": 15,
         "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 75,
+      "score": 90,
       "mandatory_gates_passed": true,
-      "status": "needs_work",
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
@@ -1586,7 +1584,7 @@
           "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "1328 lines exceeds 500; split or record an exception"
+          "36 lines"
         ],
         "verification": [
           "verification marker and valid test card"
@@ -1598,9 +1596,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "1328 lines exceeds 500; split or record an exception"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-readme-static",
