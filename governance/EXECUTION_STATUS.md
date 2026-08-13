@@ -22,10 +22,11 @@
 | Built-in LLM behavior coverage | Complete and approved |
 | Typst document behavior coverage | Complete and approved |
 | Google Workspace behavior coverage | Complete and approved |
+| Manus PPTX behavior coverage | Complete and approved |
 
 ## Current measurement
 
-The latest audit records **27 approved skills out of 33**. Remaining skills require the same review cycle: confirm scope, add or refine behavior cards, address explicit workflow/verification/safety gaps, validate, and re-run the audit. A `needs_work` status is a backlog signal, not evidence that the existing skill is unusable.
+The latest audit records **28 approved skills out of 33**. Remaining skills require the same review cycle: confirm scope, add or refine behavior cards, address explicit workflow/verification/safety gaps, validate, and re-run the audit. A `needs_work` status is a backlog signal, not evidence that the existing skill is unusable.
 
 ## Remaining release work
 
