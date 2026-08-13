@@ -109,3 +109,8 @@ Ask only the 2–4 questions that would change the architecture. **Architecture 
 | Route involves Manus API | `manus-api` |
 
 Read `references/implementation-patterns.md` when narrowing between candidate routes or after a route is selected. It contains detailed capability boundaries (e.g. when built-in LLM is sufficient vs. full Manus execution, WebDev constraints vs. Persistent Sandbox) that can resolve ambiguous cases.
+
+
+## السلامة والتعافي
+
+لا تنفذ أثرًا خارجيًا مثل إرسال رسالة أو تعديل سجل أو شراء أو نشر من حدث أو إعادة محاولة من دون مفتاح idempotency وتحقق من التفويض. تحقق من توقيع webhook أو مصدره قبل قبول الحدث، ولا تسجل أسرارًا أو حمولة مستخدم حساسة. عرّف لكل أتمتة مراقبة لحالة النجاح والفشل وتأخر التشغيل وخطة إيقاف أو تراجع؛ وعند تعطل تبعية خارجية، أوقف الأثر غير الآمن وأبلغ عن الحالة بدل تكرارها بلا حد.

@@ -96,3 +96,7 @@ If a WebDev project hits a genuine limit (Docker, non-Node runtimes, OS-level co
 
 1. Explain what specifically cannot be done within WebDev
 2. Present the options above and tell the user there will be a migration process (read `references/migrate-webdev-to-cloud-computer.md` to learn more about it)
+
+## السلامة والاسترداد
+
+لا تضع أسرارًا في image أو مستودع أو سجل خدمة، ومررها عبر آلية بيئة آمنة وقت التشغيل فقط. عرّف health check ومراقبة لمساحة القرص والذاكرة وعمر العملية، واحتفظ بخطة إعادة تشغيل واسترداد ونسخة احتياطية للبيانات الدائمة. لا تنفذ اختبارًا مدمّرًا أو ترقية على خدمة إنتاج دائمة من دون نقطة رجوع وتأكيد صريح عندما يكون للأمر أثر خارجي.

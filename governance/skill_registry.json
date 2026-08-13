@@ -1,14 +1,14 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:17:13+00:00",
+  "generated_at": "2026-08-13T01:19:15+00:00",
   "policy": "Operational quality is prioritized over ownership metadata. Refresh source-sensitive skills in their relevant development wave.",
   "skills": [
     {
       "name": "automation-and-scheduling",
       "path": "skills/automation-and-scheduling",
       "risk_level": "high",
-      "status": "needs_work",
-      "baseline_score": 45,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/automation-and-scheduling.json"
     },
@@ -115,8 +115,8 @@
       "name": "persistent-computing",
       "path": "skills/persistent-computing",
       "risk_level": "high",
-      "status": "needs_work",
-      "baseline_score": 45,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/persistent-computing.json"
     },
