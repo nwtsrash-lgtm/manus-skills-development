@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:51:32+00:00",
+  "generated_at": "2026-08-13T01:52:05+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 23,
-    "needs_work_count": 10
+    "approved_count": 24,
+    "needs_work_count": 9
   },
   "skills": [
     {
@@ -719,8 +719,8 @@
       "skill": "read-special-images",
       "path": "skills/read-special-images",
       "risk_level": "medium",
-      "line_count": 80,
-      "word_count": 708,
+      "line_count": 84,
+      "word_count": 755,
       "frontmatter": {
         "name": "read-special-images",
         "description": "Read and OCR unusually tall, wide, high-resolution, or text-dense images without hallucinating content lost to inline vision scaling. Use for long screenshots, panoramic images, large diagrams, dense documents, tiny unreadable text, or any image whose whole-image preview is not reliable; keep ordinary readable images unsplit."
@@ -737,12 +737,12 @@
         "workflow": 20,
         "progressive_disclosure": 15,
         "verification": 15,
-        "failure_and_safety": 0,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 80,
+      "score": 90,
       "mandatory_gates_passed": true,
-      "status": "needs_work",
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
@@ -754,13 +754,13 @@
           "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "80 lines"
+          "84 lines"
         ],
         "verification": [
           "verification marker and valid test card"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"

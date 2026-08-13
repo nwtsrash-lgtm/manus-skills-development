@@ -78,3 +78,7 @@ Check each crop at a readable scale and retain its coordinates when assembling a
 2. Split only the regions that need higher readable scale, preserving overlap and coordinates.
 3. Read or OCR each region, reconcile overlaps, and retain uncertainty markers.
 4. Verify the assembled result against the source before reporting it.
+
+## Failure and safety
+
+If OCR or crop processing fails, stop and report the affected region rather than silently substituting text. Treat source images as potentially sensitive: do not upload, expose, or retain derived crops beyond the task need, and redact sensitive information from any troubleshooting output.
