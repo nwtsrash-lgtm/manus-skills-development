@@ -1,8 +1,8 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T01:23:18+00:00`
+Generated: `2026-08-13T01:25:11+00:00`
 
-The audit inspected **33** skills. **19** passed all current gates; the remainder form the development backlog.
+The audit inspected **33** skills. **20** passed all current gates; the remainder form the development backlog.
 
 | Skill | Risk | Lines | Score | Status | First actionable gap |
 |---|---|---:|---:|---|---|
@@ -12,7 +12,7 @@ The audit inspected **33** skills. **19** passed all current gates; the remainde
 | `finance-pro-playbooks` | medium | 201 | 90/100 | approved | None |
 | `game-dev` | medium | 52 | 45/100 | needs_work | invocation: test card is missing |
 | `gws-best-practices` | low | 88 | 55/100 | needs_work | invocation: test card is missing |
-| `imagegen` | medium | 150 | 55/100 | needs_work | invocation: test card is missing |
+| `imagegen` | medium | 150 | 90/100 | approved | None |
 | `intelligent-free-cloud-architect` | medium | 154 | 90/100 | approved | None |
 | `manus-api` | high | 72 | 90/100 | approved | None |
 | `manus-config` | high | 253 | 90/100 | approved | None |
