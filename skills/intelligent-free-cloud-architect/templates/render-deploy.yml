@@ -1,0 +1,64 @@
+name: اختبار ونشر Render
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-production
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: اختبارات Python
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: جلب النسخة
+        uses: actions/checkout@v5
+
+      - name: إعداد Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: تثبيت الاعتمادات
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+
+      - name: تشغيل الاختبارات
+        run: python -m pytest -q
+
+  deploy:
+    name: نشر الإصدار المختبر إلى Render
+    needs: test
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: production
+    steps:
+      - name: تشغيل Render Deploy Hook للإصدار نفسه
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test -n "$RENDER_DEPLOY_HOOK_URL"
+          separator='&'
+          case "$RENDER_DEPLOY_HOOK_URL" in *\?*) ;; *) separator='?' ;; esac
+          curl --fail --silent --show-error --retry 3 --retry-all-errors \
+            --request POST "${RENDER_DEPLOY_HOOK_URL}${separator}ref=${COMMIT_SHA}"
+
+# الإعداد مرة واحدة:
+# 1) أنشئ خدمة Render تربط هذا المستودع وتستخدم Procfile الحالي.
+# 2) أنشئ Deploy Hook من Settings في Render واحفظه بسر باسم RENDER_DEPLOY_HOOK_URL.
+# 3) ضع أسرار التطبيق وDATABASE_URL (Neon) في Render Environment، لا في GitHub ولا هنا.
+# تنبيه: هذا workflow ينشر التطبيق فقط. Render Free لا يملك قرصاً دائماً مناسباً
+# لملفات SQLite؛ لا يعني وجود DATABASE_URL أن التطبيق الحالي نُقل إلى Neon.
