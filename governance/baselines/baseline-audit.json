@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:19:15+00:00",
+  "generated_at": "2026-08-13T01:20:59+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 13,
-    "needs_work_count": 20
+    "approved_count": 17,
+    "needs_work_count": 16
   },
   "skills": [
     {
@@ -427,40 +427,38 @@
         "description": "بحث وتحقق معمق من خدمات الاستضافة وقواعد البيانات والتخزين المجانية، ثم تصميم حلول سحابية هجينة آمنة منخفضة التكلفة وربطها مع GitHub والخدمات الخارجية. استخدمها عندما يطلب المستخدم أفضل منصة مجانية، مقارنة عروض سحابية، قاعدة بيانات دائمة، ترحيل من منصة، أو معمارية تربط خدمات متعددة دون مفاجآت تكلفة أو فقد بيانات."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 5
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 55,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
           "154 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -469,11 +467,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "manus-api",
@@ -539,40 +533,38 @@
         "description": "Manage connectors (App, Custom API, Custom MCP), project instructions and shared files, and scheduled task execution with manus-config. Use when the user asks to enable, inspect, or modify integrations; create a new connector from an MCP server URL/command or an API key the user provides; inspect, update, or delete the user's own custom connectors; manage project-level configuration or shared project files; explicitly add, update, or remove shared project web links; or create, update, inspect, pause, expire, or troubleshoot scheduled tasks using cron, intervals, connector UIDs, or run-as-new behavior."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 55,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
           "253 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -581,11 +573,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "manus-pptx",
@@ -1045,61 +1033,54 @@
       "skill": "webdev-custom-dockerfile",
       "path": "skills/webdev-custom-dockerfile",
       "risk_level": "high",
-      "line_count": 118,
-      "word_count": 1768,
+      "line_count": 122,
+      "word_count": 1826,
       "frontmatter": {
         "name": "webdev-custom-dockerfile",
         "description": "Manus webdev fullstack (web-db-user) projects — the deploy contract for a custom root Dockerfile (build context, secrets injection, build budget, runtime limits, base-image choice, worked examples). Read BEFORE writing or editing a Dockerfile; needed only when production requires an extra system binary (ffmpeg, chromium, fonts...) or another language runtime (Python, Ruby, Java, Go...)."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
-        "failure_and_safety": 0,
+        "verification": 15,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 45,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "118 lines"
+          "122 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "safety: no explicit failure or safety guidance found",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-data-api",
@@ -1483,40 +1464,38 @@
         "description": "Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — scheduled work reference (Heartbeat) for recurring jobs, daily/hourly tasks, end-user-scheduled cron, periodic notifications. Read FIRST before planning or coding anything that runs on a schedule."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 55,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
           "275 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -1525,11 +1504,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-readme-fullstack",

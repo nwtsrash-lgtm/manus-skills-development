@@ -116,3 +116,7 @@ Go: pick a builder tag ≥ the `go` directive in go.mod. Rust: same shape with `
 - [ ] Server listens on `process.env.PORT`; `ENV NODE_ENV=production` set
 - [ ] No secret literals anywhere; nothing `COPY`s `.env`
 - [ ] Every stage rebuilds within the ~300s budget on a cold builder (no from-scratch compilation of big dependency trees)
+
+## السلامة والتحقق التشغيلي
+
+لا تنسخ أسرارًا أو ملفات `.env` إلى طبقات الصورة ولا تمررها عبر `ARG` قابل للفحص؛ استخدم حقن أسرار وقت التشغيل. شغّل فحص بناء وhealth check قبل النشر، واحتفظ بإصدار سابق أو نقطة رجوع عند تغيير base image أو runtime. لا تعرض منفذًا أو أداة إدارية أو مسار تشخيص إلى الإنترنت بلا مصادقة وتقييد مناسبين.
