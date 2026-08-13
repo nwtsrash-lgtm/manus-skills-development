@@ -1,10 +1,10 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T00:43:13+00:00",
+  "generated_at": "2026-08-13T01:03:34+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
-    "skill_count": 32,
-    "approved_count": 2,
+    "skill_count": 33,
+    "approved_count": 3,
     "needs_work_count": 30
   },
   "skills": [
@@ -447,10 +447,10 @@
         "workflow": 10,
         "progressive_disclosure": 15,
         "verification": 5,
-        "failure_and_safety": 0,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 45,
+      "score": 55,
       "mandatory_gates_passed": false,
       "status": "needs_work",
       "evidence": {
@@ -470,7 +470,7 @@
           "verification marker found; test card missing or invalid"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"
@@ -871,6 +871,59 @@
         ],
         "progressive_disclosure": [
           "236 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
+    },
+    {
+      "skill": "systematic-debugging",
+      "path": "skills/systematic-debugging",
+      "risk_level": "medium",
+      "line_count": 60,
+      "word_count": 673,
+      "frontmatter": {
+        "name": "systematic-debugging",
+        "description": "تشخيص وإصلاح الأعطال التقنية بصورة منهجية وآمنة. استخدمها عند وجود خطأ برمجي، فشل اختبار أو بناء أو نشر، سلوك غير متوقع، تراجع في الأداء، أو خلل في تكامل؛ خصوصًا قبل اقتراح أي تغيير في الشفرة أو الإعدادات. لا تستخدمها لطلب عام لبناء ميزة جديدة أو لمشكلة لا يمكن جمع أدلة عنها بعد."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 5
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "60 lines"
         ],
         "verification": [
           "verification marker and valid test card"

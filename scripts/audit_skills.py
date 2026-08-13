@@ -58,19 +58,26 @@ def has_workflow(text: str) -> bool:
     markers = (
         "workflow", "process", "checklist", "step ", "step:",
         "routing", "decision", "quick check", "procedure",
+        "سير العمل", "خطوة ", "الخطوات", "مسار قرار", "قائمة تحقق",
     )
     lowered = text.lower()
     return any(marker in lowered for marker in markers)
 
 
 def has_verification(text: str) -> bool:
-    markers = ("validat", "verification", "test", "quality", "acceptance", "check")
+    markers = (
+        "validat", "verification", "test", "quality", "acceptance", "check",
+        "تحقق", "اختبار", "جودة", "قبول", "فحص",
+    )
     lowered = text.lower()
     return any(marker in lowered for marker in markers)
 
 
 def has_failure_guidance(text: str) -> bool:
-    markers = ("error", "failure", "fallback", "retry", "refuse", "safety", "fail closed")
+    markers = (
+        "error", "failure", "fallback", "retry", "refuse", "safety", "fail closed",
+        "خطأ", "فشل", "تراجع", "رفض", "سلامة",
+    )
     lowered = text.lower()
     return any(marker in lowered for marker in markers)
 

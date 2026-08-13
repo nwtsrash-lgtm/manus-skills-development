@@ -1,8 +1,8 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T00:43:13+00:00`
+Generated: `2026-08-13T01:03:34+00:00`
 
-The audit inspected **32** skills. **2** passed all current gates; the remainder form the development backlog.
+The audit inspected **33** skills. **3** passed all current gates; the remainder form the development backlog.
 
 | Skill | Risk | Lines | Score | Status | First actionable gap |
 |---|---|---:|---:|---|---|
@@ -13,7 +13,7 @@ The audit inspected **32** skills. **2** passed all current gates; the remainder
 | `game-dev` | medium | 52 | 45/100 | needs_work | invocation: test card is missing |
 | `gws-best-practices` | low | 88 | 55/100 | needs_work | invocation: test card is missing |
 | `imagegen` | medium | 150 | 55/100 | needs_work | invocation: test card is missing |
-| `intelligent-free-cloud-architect` | medium | 154 | 45/100 | needs_work | invocation: test card is missing |
+| `intelligent-free-cloud-architect` | medium | 154 | 55/100 | needs_work | invocation: test card is missing |
 | `manus-api` | high | 110 | 90/100 | approved | None |
 | `manus-config` | high | 253 | 55/100 | needs_work | invocation: test card is missing |
 | `manus-pptx` | low | 279 | 45/100 | needs_work | invocation: test card is missing |
@@ -21,6 +21,7 @@ The audit inspected **32** skills. **2** passed all current gates; the remainder
 | `persistent-computing` | high | 98 | 45/100 | needs_work | invocation: test card is missing |
 | `read-special-images` | medium | 69 | 45/100 | needs_work | invocation: test card is missing |
 | `skill-creator` | medium | 236 | 90/100 | approved | None |
+| `systematic-debugging` | medium | 60 | 90/100 | approved | None |
 | `tts-prompter` | low | 247 | 45/100 | needs_work | invocation: test card is missing |
 | `typst-pdf-maker` | low | 192 | 55/100 | needs_work | invocation: test card is missing |
 | `webdev-custom-dockerfile` | high | 118 | 45/100 | needs_work | invocation: test card is missing |
