@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:50:25+00:00",
+  "generated_at": "2026-08-13T01:51:19+00:00",
   "policy": "Operational quality is prioritized over ownership metadata. Refresh source-sensitive skills in their relevant development wave.",
   "skills": [
     {
@@ -125,7 +125,7 @@
       "path": "skills/read-special-images",
       "risk_level": "medium",
       "status": "needs_work",
-      "baseline_score": 45,
+      "baseline_score": 80,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/read-special-images.json"
     },

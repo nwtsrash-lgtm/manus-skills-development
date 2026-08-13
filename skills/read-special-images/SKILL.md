@@ -67,3 +67,7 @@ Extract or interpret image content at a readable scale, preserve reading order, 
 ## Files Included
 
 - `scripts/slice_image.py` inspects dimensions and creates deterministic overlapping tiles plus a reading-order manifest.
+
+## Verification and uncertainty
+
+Check each crop at a readable scale and retain its coordinates when assembling a result. If a value remains blurred, clipped, or ambiguous after the appropriate crop and OCR attempt, report it as unreadable rather than infer it. Preserve the source image, avoid exposing sensitive details in diagnostic artifacts, and ask for a clearer source when accuracy matters.
