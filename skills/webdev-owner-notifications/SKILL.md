@@ -1,13 +1,24 @@
 ---
 name: webdev-owner-notifications
-description: Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — pushing alert notifications to the project owner.
+description: إرسال تنبيهات تشغيلية إلى مالك مشروع Manus WebDev الكامل أو Expo عبر notifyOwner. استخدمها عند وجود حدث يحتاج انتباه مالك المشروع، مثل فشل مهمة أو إرسال نموذج أو نتيجة سير عمل؛ ولا تستخدمها لرسائل المستخدم النهائي أو لتكرار حدث واحد دون إلغاء ازدواج.
 ---
 
-## Owner Notifications
+# تنبيهات مالك المشروع
 
-This template already ships with a `notifyOwner({ title, content })` helper (`server/_core/notification.ts`) and a protected tRPC mutation at `trpc.system.notifyOwner`. Use it whenever backend logic needs to push an operational update to the Manus project owner—common triggers are new form submissions, survey feedback, or workflow results.
+## الحدود
 
-1. On the server, call `await notifyOwner({ title, content })` or reuse the provided `system.notifyOwner` mutation from jobs/webhooks (`trpc.system.notifyOwner.useMutation()` on the client).
-2. Handle the boolean return (`true` on success, `false` if the upstream service is temporarily unavailable) to decide whether you need a fallback channel.
+استخدم `notifyOwner({ title, content })` في الخادم، أو المسار المحمي المقدم من القالب عند وجود تفاعل واجهة مشروع مناسب. خصص هذه القناة للتنبيهات التشغيلية للمالك؛ ابنِ قناة تطبيق منفصلة للإشعارات أو الرسائل الموجهة للمستخدمين النهائيين.
 
-Keep this channel for owner-facing alerts; end-user messaging should flow through your app-specific systems.
+لا تضع كلمة مرور أو رمز تفويض أو تفاصيل دفع أو محتوى مستخدم كامل في العنوان أو النص. لخّص الحدث واربط بمعرف سجل أو صفحة داخلية يمكن للمالك الوصول إليها.
+
+## سير العمل
+
+1. عرّف الحدث وشدته: معلوماتي، يحتاج مراجعة، أو فشل يتطلب تدخلًا. لا ترسل تنبيهًا لكل خطوة عادية.
+2. أنشئ مفتاح إلغاء ازدواج من نوع الحدث ومعرف المورد والحالة، وخزنه أو افحصه قبل الإرسال. الأحداث المعاد تسليمها أو إعادة المحاولة لا ينبغي أن تنتج تنبيهات متعددة.
+3. أرسل عنوانًا قصيرًا ومحتوى منقحًا يوضح ما حدث ومتى وما الإجراء التالي، ثم افحص قيمة الإرجاع البوليانية.
+4. إذا أعادت الخدمة `false`، سجّل فشلًا منقحًا وجدول إعادة محاولة محدودة أو قناة بديلة مصرحًا بها. لا تدور في حلقة إعادة محاولة مفتوحة.
+5. اجمع مقاييس للعدد والفشل والازدواج حتى يمكن تخفيض الضجيج وتحسين قواعد الشدة.
+
+## التحقق
+
+اختبر حدثًا جديدًا، وإعادة تسليم الحدث نفسه، وفشل الإرسال، ومحتوى يحاول تضمين معلومة حساسة، وحالة لا ينبغي أن تنبه المالك. تأكد أن المستخدم النهائي لا يستطيع استدعاء تنبيه المالك بلا تفويض وأن فشل قناة التنبيه لا يلغي المعاملة الأصلية إذا لم يكن التنبيه جزءًا من صحتها.

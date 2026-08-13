@@ -1,146 +1,40 @@
 ---
 name: webdev-llm-integration
-description: Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — built-in LLM integration for AI features, chat completions, structured JSON responses, model listing/selection, streaming, thinking/reasoning.
+description: بناء ميزات ذكاء اصطناعي داخل تطبيقات Manus WebDev الكاملة أو Expo عبر invokeLLM وlistLLMModels، بما يشمل المحادثة والمخرجات المنظمة والتفكير والبث. استخدمها عند احتياج التطبيق إلى استدعاء LLM من الخادم؛ ولا تستخدمها لتضمين مفتاح أو طلب نموذج مباشرة في العميل أو لافتراض نموذج ثابت من الذاكرة.
 ---
 
-## LLM Integration
+# تكامل LLM
 
-Use the preconfigured LLM helpers. Credentials are injected from the platform (no manual setup required).
+## القاعدة الأساسية
 
-```ts
-import { invokeLLM } from "./server/_core/llm";
+استدعِ `invokeLLM` و`listLLMModels` من الخادم فقط. استخرج قائمة النماذج الحية وقدراتها قبل اعتماد معرف نموذج أو معلمة تفكير أو ميزانية؛ لا تنسخ معرفًا أو سعرًا أو دعم streaming من مثال قديم. راجع مهارة `builtin-llm-models` عند اختيار نموذج أو إعداد thinking/reasoning أو حد token.
 
-/**
- * Simple chat completion
- * type Role = "system" | "user" | "assistant" | "tool" | "function";
- * type TextContent = {
- *   type: "text";
- *   text: string;
- * };
- *
- * type ImageContent = {
- *   type: "image_url";
- *   image_url: {
- *     url: string;
- *     detail?: "auto" | "low" | "high";
- *   };
- * };
- *
- * type FileContent = {
- *   type: "file_url";
- *   file_url: {
- *     url: string;
- *     mime_type?: "audio/mpeg" | "audio/wav" | "application/pdf" | "audio/mp4" | "video/mp4" ;
- *   };
- * };
- *
- * export type Message = {
- *   role: Role;
- *   content: string | Array<ImageContent | TextContent | FileContent>
- * };
- *
- * Supported parameters:
- * messages: Array<{
- *   role: 'system' | 'user' | 'assistant' | 'tool',
- *   content: string | { tool_call: { name: string, arguments: string } }
- * }>
- * tool_choice?: 'none' | 'auto' | 'required' | { type: 'function', function: { name: string } }
- * tools?: Tool[]
- */
-const response = await invokeLLM({
-  messages: [
-    { role: "system", content: "You are a helpful assistant." },
-    { role: "user", content: "Hello, world!" },
-  ],
-});
-```
+تحقق من هوية المستخدم وصلاحيته وحجم مدخلاته قبل كل استدعاء. لا تمرر أسرارًا أو تعليمات نظامية داخلية أو بيانات مستخدم لا تحتاجها المهمة. افصل المحتوى غير الموثوق الذي يقدمه المستخدم عن تعليمات الخادم، ولا تعامل مخرج النموذج كأنه أمر موثوق أو حقيقة مثبتة.
 
-Tips
-- Always call llm functions from server-side code (e.g., inside tRPC procedures), to avoid exposing your API key.
-- LLM calls deduct from this project's credit balance.
-- All models support streaming, but `invokeLLM()` doesn't expose `stream` — modify the helper to pass `stream: true` and parse the SSE response if you need it. When proxying SSE, listen on `res` close (not `req`) and guard with a `finished` flag, or the upstream gets aborted after the first event.
-- LLM responses often contain markdown. Use `<Streamdown>{content}</Streamdown>` (imported from `streamdown`) to render markdown content with proper formatting and streaming support.
+## مسار الاختيار
 
-### Listing Available Models
+| الحاجة | التنفيذ |
+|---|---|
+| إجابة نصية أو تلخيص صغير | استدعاء خادمي مع حد للمدخل والمخرج ونموذج من الكتالوج. |
+| بيانات تستهلكها شيفرة | `response_format` مع JSON Schema صارم، ثم تحقق برمجي مستقل قبل أي أثر. |
+| تفاعل طويل | بث خادمي مضبوط مع إلغاء وتنظيف اتصال؛ لا تعدل helper قبل فهم عقده. |
+| تحليل عالي الكلفة أو دفعات | ابدأ بنموذج ملائم منخفض الكلفة، طبق بوابة جودة، ثم ارفع الحالات الفاشلة فقط. |
+| أداة أو إجراء خارجي | لا تنفذه من مخرج النموذج بلا تحقق من المدخلات وتفويض المستخدم وتأكيده عند الحاجة. |
 
-```ts
-import { listLLMModels } from "./server/_core/llm";
+## التنفيذ
 
-const { data } = await listLLMModels();
-const ids = data.map(m => m.id);
-```
+1. استدعِ `listLLMModels()` أو الكتالوج الحي وحدد نموذجًا يدعم القدرة المطلوبة. خزّن سبب الاختيار في إعداد خادمي أو سجل منقح، لا في واجهة العميل.
+2. حدد عقدًا للمهمة: مدخل محدود، system instruction خادمي، ومخرج متوقع. لا تجعل المحادثة غير محدودة ولا تعيد إرسال تاريخ كامل من دون سياسة تقصير أو حدود.
+3. نفذ `invokeLLM` في إجراء خادمي، وسجل مقاييس منقحة مثل النموذج والزمن وعدد المحاولات، لا النص الحساس.
+4. للمخرجات المنظمة، استخدم JSON Schema مع `strict: true` عند دعمه، ثم حلّل المحتوى وتحقق منه في التطبيق. عالج الخطأ أو JSON غير القابل للتحليل ولا تعتمد على مطالبة النموذج وحدها.
+5. للبث، أبقِ اتصال الخادم هو مالك جلسة SSE، ونظف المورد عند إغلاق الاستجابة، واحمِ الإرسال من التكرار بعد انتهاء الطلب. اعرض في العميل حالات انتظار وإلغاء وفشل لا محتوى ناقصًا بوصفه نجاحًا.
 
-Returns OpenAI-standard model metadata for each available ID. From the project shell you can also peek at it directly: `curl "$BUILT_IN_FORGE_API_URL/v1/models" -H "Authorization: Bearer $BUILT_IN_FORGE_API_KEY"`.
+## التحكم في الكلفة والموثوقية
 
-**Combine with `invokeLLM`** to discover IDs at runtime instead of hardcoding:
+ضع حدودًا للطلبات لكل مستخدم أو عملية، وحدًا لطول المدخل وسجلًا للاستخدام. لا تعيد محاولة مخرج غير صالح بالمعلمات نفسها بلا تشخيص؛ حسّن المخطط أو المحتوى أو صعّد النموذج وفق قاعدة واضحة. استعمل fallback فقط إذا كان مخرج النموذج البديل يفي بالعقد نفسه.
 
-```ts
-import { invokeLLM, listLLMModels } from "./server/_core/llm";
+لا تعرض reasoning الداخلي أو بيانات الأداة للمستخدم لمجرد توفرها. تحقّق من دعم معلمات `thinking` أو `reasoning` في الكتالوج الحي؛ تختلف أشكالها وحدود tokens بين عائلات النماذج.
 
-const { data } = await listLLMModels();
-const model = data.find(m => m.id.startsWith("claude-"))?.id;
+## التحقق
 
-const response = await invokeLLM({
-  model,
-  messages: [{ role: "user", content: "Hello" }],
-});
-```
-
-### Thinking / Reasoning
-
-`invokeLLM()` forwards `thinking` and `reasoning` extension params unchanged (no defaults). Per model family:
-
-- OpenAI gpt-5 family — `reasoning: { effort: "minimal" | "low" | "medium" | "high" }`
-- Anthropic claude family — `thinking: { type: "enabled", budget_tokens: 2048 }`
-- Google gemini family — `thinking: { budget_tokens: 1024 }`
-
-```ts
-await invokeLLM({
-  model: "claude-sonnet-4-6",
-  messages: [...],
-  thinking: { type: "enabled", budget_tokens: 2048 },
-});
-
-await invokeLLM({
-  model: "gpt-5",
-  messages: [...],
-  reasoning: { effort: "low" },
-});
-```
-
-For the exact shape per model, check `capabilities.thinking_example` from the `/models` catalog (see Tips above).
-
-### Structured Responses (JSON Schema)
-
-Ask the model to return structured JSON via `response_format`:
-
-```ts
-import { invokeLLM } from "./server/_core/llm";
-
-const structured = await invokeLLM({
-  messages: [
-    { role: "system", content: "You are a helpful assistant designed to output JSON." },
-    { role: "user", content: "Extract the name and age from the following text: \"My name is Alice and I am 30 years old.\"" },
-  ],
-  response_format: {
-    type: "json_schema",
-    json_schema: {
-      name: "person_info",
-      strict: true,
-      schema: {
-        type: "object",
-        properties: {
-          name: { type: "string", description: "The name of the person" },
-          age: { type: "integer", description: "The age of the person" },
-        },
-        required: ["name", "age"],
-        additionalProperties: false,
-      },
-    },
-  },
-});
-
-// The model responds with JSON content matching the schema.
-// Access via `structured.choices[0].message.content` and JSON.parse if needed.
-```
-The helpers mirror the Python SDK semantics but produce JavaScript-first code, keeping credentials inside the server and ensuring every environment has access to the same token.
+اختبر نموذجًا متاحًا وآخر غير موجود، ومدخلًا كبيرًا، ومخرج JSON صالحًا وغير صالح، وانقطاع بث، وحد الاستخدام، ومحاولة تضمين تعليمات خبيثة في إدخال المستخدم. تأكد أن مفاتيح الخدمة لا تصل إلى العميل وأن أي إجراء خارجي ينتج من LLM يمر عبر تحقق التطبيق وتفويضه.

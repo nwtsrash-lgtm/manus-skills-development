@@ -1,8 +1,8 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T01:10:06+00:00`
+Generated: `2026-08-13T01:17:13+00:00`
 
-The audit inspected **33** skills. **3** passed all current gates; the remainder form the development backlog.
+The audit inspected **33** skills. **11** passed all current gates; the remainder form the development backlog.
 
 | Skill | Risk | Lines | Score | Status | First actionable gap |
 |---|---|---:|---:|---|---|
@@ -25,20 +25,20 @@ The audit inspected **33** skills. **3** passed all current gates; the remainder
 | `tts-prompter` | low | 247 | 45/100 | needs_work | invocation: test card is missing |
 | `typst-pdf-maker` | low | 192 | 55/100 | needs_work | invocation: test card is missing |
 | `webdev-custom-dockerfile` | high | 118 | 45/100 | needs_work | invocation: test card is missing |
-| `webdev-data-api` | high | 8 | 30/100 | needs_work | invocation: test card is missing |
-| `webdev-file-storage` | high | 28 | 30/100 | needs_work | invocation: test card is missing |
-| `webdev-image-generation` | medium | 55 | 55/100 | needs_work | invocation: test card is missing |
-| `webdev-llm-integration` | medium | 146 | 45/100 | needs_work | invocation: test card is missing |
-| `webdev-manus-oauth` | high | 154 | 55/100 | needs_work | invocation: test card is missing |
-| `webdev-maps-integration` | high | 21 | 40/100 | needs_work | invocation: test card is missing |
-| `webdev-owner-notifications` | high | 13 | 50/100 | needs_work | invocation: test card is missing |
+| `webdev-data-api` | high | 37 | 90/100 | approved | None |
+| `webdev-file-storage` | high | 38 | 90/100 | approved | None |
+| `webdev-image-generation` | medium | 40 | 90/100 | approved | None |
+| `webdev-llm-integration` | medium | 40 | 90/100 | approved | None |
+| `webdev-manus-oauth` | high | 28 | 90/100 | approved | None |
+| `webdev-maps-integration` | high | 29 | 90/100 | approved | None |
+| `webdev-owner-notifications` | high | 24 | 90/100 | approved | None |
 | `webdev-periodic-updates` | high | 275 | 55/100 | needs_work | invocation: test card is missing |
 | `webdev-readme-fullstack` | medium | 854 | 40/100 | needs_work | 854 lines exceeds 500; split or record an exception |
 | `webdev-readme-mobile` | medium | 919 | 40/100 | needs_work | 919 lines exceeds 500; split or record an exception |
 | `webdev-readme-mobile-backend` | medium | 1328 | 40/100 | needs_work | 1328 lines exceeds 500; split or record an exception |
 | `webdev-readme-static` | medium | 693 | 40/100 | needs_work | 693 lines exceeds 500; split or record an exception |
 | `webdev-ssr-conversion` | medium | 105 | 55/100 | needs_work | invocation: test card is missing |
-| `webdev-voice-transcription` | medium | 31 | 35/100 | needs_work | invocation: test card is missing |
+| `webdev-voice-transcription` | medium | 34 | 90/100 | approved | None |
 
 ## Interpretation
 

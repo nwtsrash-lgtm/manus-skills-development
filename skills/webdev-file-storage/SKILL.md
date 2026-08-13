@@ -1,28 +1,38 @@
 ---
 name: webdev-file-storage
-description: Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — uploading and serving user files, images, documents via the built-in S3 storage helpers.
+description: رفع وعرض ملفات المستخدمين وصورهم ووثائقهم في تطبيقات Manus WebDev الكاملة أو Expo عبر مساعدات التخزين المضمنة. استخدمها عند الحاجة إلى حفظ bytes خارج قاعدة البيانات وربطها بسجل تطبيق؛ ولا تستخدمها لحفظ أسرار أو كبديل عن صلاحيات التطبيق أو قاعدة بيانات الميتاداتا.
 ---
 
-## ☁️ File Storage
+# تخزين الملفات
 
-Use the preconfigured storage helpers in `server/storage.ts`. Credentials are injected from the platform (no manual setup required). Files are stored securely and served via the built-in `/manus-storage/` path — no manual URL management needed.
+## الحدود
+
+استخدم مساعدات التخزين المهيأة في طبقة الخادم مثل `server/storage.ts`. تبقى بيانات الاعتماد داخل البيئة الخادمية؛ لا تضعها في تطبيق العميل ولا تنشئ توقيع URL يدويًا إذا كانت طبقة التخزين المضمنة تديره.
+
+احفظ bytes في التخزين، واحفظ في قاعدة البيانات فقط المفتاح ومالك المورد ونوع المحتوى والحجم ووقت الإنشاء وحالة المعالجة. لا تجعل مسار التخزين وحده بديلًا عن تحقق التطبيق من أن المستخدم يملك السجل المرتبط.
+
+## دورة حياة الرفع
+
+1. صادق المستخدم وقرر ما إذا كان يملك حق إنشاء الملف لنوع المورد المقصود.
+2. تحقق من الحجم قبل قراءة الملف كاملًا، واسمح فقط بأنواع MIME وقائمة امتدادات متسقة مع حالة الاستخدام. لا تثق بـ MIME المرسل من العميل وحده عندما يمكن فحص bytes أو اسم الملف بأمان.
+3. أنشئ مفتاحًا غير قابل للتخمين يتضمن نطاق المورد ومالكًا أو معرف سجل، ولا تبنِه مباشرة من اسم ملف المستخدم. لا تسمح بـ path traversal أو بادئات مشتركة بين مستخدمين.
+4. ارفع من الخادم باستخدام `storagePut`، ثم أنشئ أو حدّث صف الميتاداتا بعد نجاح الرفع. عند فشل الحفظ في قاعدة البيانات، اعرض حالة يتيمة قابلة للمراجعة ولا تدع الواجهة تفترض نجاح العملية.
+5. اعرض المسار الذي ترجعه طبقة التخزين فقط بعد تحقق التطبيق من حق الوصول للسجل. لا تفترض أن الرابط العام مناسب لملف خاص.
 
 ```ts
 import { storagePut } from "./server/storage";
 
-// Upload bytes to storage
-const fileKey = `${userId}-files/${fileName}.png`
-const { key, url } = await storagePut(
-  fileKey,
-  fileBuffer, // Buffer | Uint8Array | string
-  "image/png"
-);
-// url = "/manus-storage/{key}" — use directly in frontend code
-// key = unique storage key — save in database
+const key = `users/${userId}/assets/${assetId}`;
+const stored = await storagePut(key, fileBuffer, verifiedMimeType);
+// خزّن stored.key وبيانات الملف في قاعدة البيانات بعد نجاح الرفع.
 ```
 
-Tips
-- Save the `key` or `url` in your database; use storage for the actual file bytes. This applies to all files including images, documents, and media.
-- For file uploads, have the client POST to your server, then call `storagePut` from your backend.
-- The returned `url` (e.g. `/manus-storage/...`) is automatically served via signed redirect — no manual URL signing needed.
-- To delete a file, drop its `key` from your DB and any UI references — the key is the only way to reach the object, so an unreferenced file is effectively gone. Do not implement a helper to remove the underlying object; the template's storage layer does not expose a delete endpoint.
+## العرض والإدارة
+
+يستعمل المسار `/manus-storage/…` آلية التخزين المضمنة، لكن تطبيقك ما زال مسؤولًا عن إخفاء السجل أو الرابط من غير المصرح لهم. اعرض حالة معالجة للملفات التي تحتاج فحصًا أو تحويلًا، ولا تفتحها أو تمررها إلى خدمة أخرى قبل اكتمال التحقق المطلوب.
+
+إذا لم تعرض الطبقة المضمنة حذفًا فعليًا للكائن، فلا تدّعِ أنه حُذف. افصل بين إزالة مرجع المستخدم، وإخفاء المورد من الواجهة، وسياسة التنظيف أو الاحتفاظ الفعلية. سجّل عناصر التخزين اليتيمة عند انقطاع التدفق حتى يمكن مراجعتها وفق سياسة الاحتفاظ.
+
+## حالات الفشل والتحقق
+
+ارفض ملفًا كبيرًا أو نوعًا غير مسموح أو مستخدمًا غير مصادق قبل الرفع. اختبر رفعًا ناجحًا، ورفض نوع وحجم، وفشل تخزين، وفشل كتابة الميتاداتا، ومحاولة مستخدم ثانٍ الوصول إلى سجل غير مملوك له. لا تسجل bytes أو روابط خاصة أو أسماء ملفات حساسة في سجل تشخيص عام.

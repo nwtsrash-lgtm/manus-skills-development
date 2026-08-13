@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:10:06+00:00",
+  "generated_at": "2026-08-13T01:17:13+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 3,
-    "needs_work_count": 30
+    "approved_count": 11,
+    "needs_work_count": 22
   },
   "skills": [
     {
@@ -1119,167 +1119,151 @@
       "skill": "webdev-data-api",
       "path": "skills/webdev-data-api",
       "risk_level": "high",
-      "line_count": 8,
-      "word_count": 64,
+      "line_count": 37,
+      "word_count": 430,
       "frontmatter": {
         "name": "webdev-data-api",
-        "description": "Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — fetching external data via the Manus API Hub."
+        "description": "جلب بيانات خارجية لتطبيقات Manus WebDev الكاملة أو Expo عبر Manus API Hub أو تكامل خادمي موثوق. استخدمها عند إضافة مصدر بيانات عام أو شريك خارجي أو مزامنة قراءة؛ ولا تستخدمها لتخزين بيانات التطبيق الأساسية أو لتنفيذ طلب حساس مباشرة من المتصفح."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 0,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 0,
-        "failure_and_safety": 0,
+        "verification": 15,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 30,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "no workflow marker found"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "8 lines"
+          "37 lines"
         ],
         "verification": [
-          "no verification marker found"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "safety: no explicit failure or safety guidance found",
-        "verification: no verification marker found",
-        "workflow: no workflow marker found"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-file-storage",
       "path": "skills/webdev-file-storage",
       "risk_level": "high",
-      "line_count": 28,
-      "word_count": 235,
+      "line_count": 38,
+      "word_count": 417,
       "frontmatter": {
         "name": "webdev-file-storage",
-        "description": "Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — uploading and serving user files, images, documents via the built-in S3 storage helpers."
+        "description": "رفع وعرض ملفات المستخدمين وصورهم ووثائقهم في تطبيقات Manus WebDev الكاملة أو Expo عبر مساعدات التخزين المضمنة. استخدمها عند الحاجة إلى حفظ bytes خارج قاعدة البيانات وربطها بسجل تطبيق؛ ولا تستخدمها لحفظ أسرار أو كبديل عن صلاحيات التطبيق أو قاعدة بيانات الميتاداتا."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 0,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 0,
-        "failure_and_safety": 0,
+        "verification": 15,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 30,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "no workflow marker found"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "28 lines"
+          "38 lines"
         ],
         "verification": [
-          "no verification marker found"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "safety: no explicit failure or safety guidance found",
-        "verification: no verification marker found",
-        "workflow: no workflow marker found"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-image-generation",
       "path": "skills/webdev-image-generation",
       "risk_level": "medium",
-      "line_count": 55,
-      "word_count": 227,
+      "line_count": 40,
+      "word_count": 391,
       "frontmatter": {
         "name": "webdev-image-generation",
-        "description": "Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — AI image creation or editing, model listing/selection."
+        "description": "توليد أو تعديل الصور داخل تطبيقات Manus WebDev الكاملة أو Expo عبر خدمة الصور المضمنة. استخدمها عند بناء ميزة تطلب صورة جديدة أو تحرير صورة يملك المستخدم حق استخدامها؛ ولا تستخدمها لتعديل ملف المستخدم مباشرة من العميل أو لاختيار نموذج من اسم ثابت غير متحقق منه."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 55,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "55 lines"
+          "40 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -1288,116 +1272,104 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-llm-integration",
       "path": "skills/webdev-llm-integration",
       "risk_level": "medium",
-      "line_count": 146,
-      "word_count": 697,
+      "line_count": 40,
+      "word_count": 502,
       "frontmatter": {
         "name": "webdev-llm-integration",
-        "description": "Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — built-in LLM integration for AI features, chat completions, structured JSON responses, model listing/selection, streaming, thinking/reasoning."
+        "description": "بناء ميزات ذكاء اصطناعي داخل تطبيقات Manus WebDev الكاملة أو Expo عبر invokeLLM وlistLLMModels، بما يشمل المحادثة والمخرجات المنظمة والتفكير والبث. استخدمها عند احتياج التطبيق إلى استدعاء LLM من الخادم؛ ولا تستخدمها لتضمين مفتاح أو طلب نموذج مباشرة في العميل أو لافتراض نموذج ثابت من الذاكرة."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
-        "failure_and_safety": 0,
+        "verification": 15,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 45,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "146 lines"
+          "40 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-manus-oauth",
       "path": "skills/webdev-manus-oauth",
       "risk_level": "high",
-      "line_count": 154,
-      "word_count": 908,
+      "line_count": 28,
+      "word_count": 361,
       "frontmatter": {
         "name": "webdev-manus-oauth",
-        "description": "Manus webdev fullstack (web-db-user) projects — Manus OAuth redirect URL handling, invite and magic links."
+        "description": "الحفاظ على تدفق OAuth وعمليات إعادة التوجيه وروابط الدعوة في مشاريع Manus WebDev الكاملة. استخدمها عند تعديل تسجيل الدخول أو callback أو magic link أو invitation URL؛ ولا تستخدمها لإنشاء callback ثانٍ أو لتخمين أصل الواجهة من الخادم أو لقبول origin غير متحقق منه."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 55,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "154 lines"
+          "28 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -1406,117 +1378,51 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-maps-integration",
       "path": "skills/webdev-maps-integration",
       "risk_level": "high",
-      "line_count": 21,
-      "word_count": 159,
+      "line_count": 29,
+      "word_count": 341,
       "frontmatter": {
         "name": "webdev-maps-integration",
-        "description": "Manus webdev fullstack (web-db-user) projects — Google Maps integration for maps, geocoding, directions, places."
+        "description": "دمج خرائط Google والترميز الجغرافي والاتجاهات والأماكن في مشاريع Manus WebDev الكاملة عبر MapView وطبقة الخادم المضمنة. استخدمها عند عرض موقع أو تنفيذ بحث مكان أو اتجاهات أو عملية خرائط؛ ولا تستخدمها لطلب مفتاح Google من المستخدم أو لتخزين موقع حساس بلا غرض وصلاحية ومدة احتفاظ محددة."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 0,
-        "failure_and_safety": 0,
-        "source_freshness": 0
-      },
-      "score": 40,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
-      "evidence": {
-        "structural_integrity": [
-          "valid metadata and links"
-        ],
-        "invocation_boundaries": [
-          "test card is missing"
-        ],
-        "workflow": [
-          "workflow marker found; test card missing or invalid"
-        ],
-        "progressive_disclosure": [
-          "21 lines"
-        ],
-        "verification": [
-          "no verification marker found"
-        ],
-        "failure_and_safety": [
-          "no explicit failure or safety guidance found"
-        ],
-        "source_freshness": [
-          "baseline: source freshness not yet recorded"
-        ]
-      },
-      "issues": [
-        "invocation: test card is missing",
-        "safety: no explicit failure or safety guidance found",
-        "verification: no verification marker found",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
-    },
-    {
-      "skill": "webdev-owner-notifications",
-      "path": "skills/webdev-owner-notifications",
-      "risk_level": "high",
-      "line_count": 13,
-      "word_count": 129,
-      "frontmatter": {
-        "name": "webdev-owner-notifications",
-        "description": "Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — pushing alert notifications to the project owner."
-      },
-      "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
-      },
-      "scores": {
-        "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
-        "progressive_disclosure": 15,
-        "verification": 0,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 50,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "13 lines"
+          "29 lines"
         ],
         "verification": [
-          "no verification marker found"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -1525,11 +1431,60 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: no verification marker found",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
+    },
+    {
+      "skill": "webdev-owner-notifications",
+      "path": "skills/webdev-owner-notifications",
+      "risk_level": "high",
+      "line_count": 24,
+      "word_count": 270,
+      "frontmatter": {
+        "name": "webdev-owner-notifications",
+        "description": "إرسال تنبيهات تشغيلية إلى مالك مشروع Manus WebDev الكامل أو Expo عبر notifyOwner. استخدمها عند وجود حدث يحتاج انتباه مالك المشروع، مثل فشل مهمة أو إرسال نموذج أو نتيجة سير عمل؛ ولا تستخدمها لرسائل المستخدم النهائي أو لتكرار حدث واحد دون إلغاء ازدواج."
+      },
+      "test_card": {
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 6
+      },
+      "scores": {
+        "structural_integrity": 15,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
+        "failure_and_safety": 10,
+        "source_freshness": 0
+      },
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
+      "evidence": {
+        "structural_integrity": [
+          "valid metadata and links"
+        ],
+        "invocation_boundaries": [
+          "description plus valid positive/negative test cases"
+        ],
+        "workflow": [
+          "workflow marker and valid expected outcomes"
+        ],
+        "progressive_disclosure": [
+          "24 lines"
+        ],
+        "verification": [
+          "verification marker and valid test card"
+        ],
+        "failure_and_safety": [
+          "failure or safety guidance found"
+        ],
+        "source_freshness": [
+          "baseline: source freshness not yet recorded"
+        ]
+      },
+      "issues": []
     },
     {
       "skill": "webdev-periodic-updates",
@@ -1893,60 +1848,54 @@
       "skill": "webdev-voice-transcription",
       "path": "skills/webdev-voice-transcription",
       "risk_level": "medium",
-      "line_count": 31,
-      "word_count": 150,
+      "line_count": 34,
+      "word_count": 305,
       "frontmatter": {
         "name": "webdev-voice-transcription",
-        "description": "Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — speech-to-text via the built-in Whisper API."
+        "description": "تحويل ملفات صوت المستخدم إلى نص في تطبيقات Manus WebDev الكاملة أو Expo عبر مساعد النسخ الصوتي المضمن. استخدمها بعد رفع ملف صوت مصرح به إلى رابط موثوق؛ ولا تستخدمها لتمرير ملف من العميل مباشرة أو لنسخ صوت لا يملك المستخدم حق معالجته."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 4
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 0,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
-        "failure_and_safety": 0,
+        "verification": 15,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 35,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "no workflow marker found"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "31 lines"
+          "34 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: no workflow marker found"
-      ]
+      "issues": []
     }
   ]
 }

@@ -1,55 +1,40 @@
 ---
 name: webdev-image-generation
-description: Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — AI image creation or editing, model listing/selection.
+description: توليد أو تعديل الصور داخل تطبيقات Manus WebDev الكاملة أو Expo عبر خدمة الصور المضمنة. استخدمها عند بناء ميزة تطلب صورة جديدة أو تحرير صورة يملك المستخدم حق استخدامها؛ ولا تستخدمها لتعديل ملف المستخدم مباشرة من العميل أو لاختيار نموذج من اسم ثابت غير متحقق منه.
 ---
 
-## Image Generation Integration
+# تكامل توليد الصور
 
-Use the preconfigured image generation helper that connects to the internal ImageService, no manual setup required.
+## قرار التنفيذ
 
-Example usage:
-```ts
-import { generateImage } from "./server/_core/imageGeneration.ts";
+استدعِ الخدمة من الخادم فقط، مثل إجراء tRPC أو endpoint موثوق. استخدم توليدًا جديدًا عندما لا توجد صورة مرجعية، واستخدم التحرير فقط مع رابط ملف صالح ونوع MIME معروف وصلاحية استخدام واضحة. لا تمرر مفتاحًا أو إعداد خدمة إلى العميل.
 
-const { url: imageUrl } = await generateImage({
-  prompt: "A serene landscape with mountains"
-});
-// For editing:
-const { url: imageUrl } = await generateImage({
-  prompt: "Add a rainbow to this landscape",
-  originalImages: [{
-    url: "https://example.com/original.jpg",
-    mimeType: "image/jpeg"
-  }]
-});
-```
+استدعِ `listImageModels()` عند اختيار نموذج أو عرض خيار للمستخدم، ثم مرّر معرفًا ظهر في الكتالوج إلى `generateImage()`. لا تفترض أن `quality` أو خيارًا خاصًا مدعوم من كل نموذج؛ أرسله فقط عند تأكيد دعمه.
 
-### Selecting a model
+## سير العمل
 
-`generateImage()` defaults to **GPT Image 2** (`MODEL_GPT_IMAGE_2`) at `medium` quality. Pass `model` and/or `quality` to override:
+1. تحقق من طلب المستخدم: نص موجز، مقاس أو غرض إن كان الواجهة تدعمه، ورابط وصيغة الصورة الأصلية للتحرير.
+2. طبق حدودًا على طول prompt وعدد الصور وحجمها، وارفض رابطًا خاصًا أو نوعًا غير مدعوم بدل تمريره إلى خدمة التوليد.
+3. أنشئ الطلب من الخادم واحتفظ بمعرف مورد التطبيق وحالة العملية، لا بـ URL خارجي وحده.
+4. اعرض حالة انتظار وإمكانية إعادة محاولة مضبوطة عند فشل مؤقت. لا تجعل نقرة المستخدم تبدأ عدة توليدات متطابقة.
+5. بعد النجاح، احفظ رابط الناتج أو انقله إلى تخزين التطبيق وفق سياسة الاحتفاظ، واربطه بمالك المورد وprompt منقح وإعدادات النموذج التي لا تكشف سرًا.
 
 ```ts
-const { url: imageUrl } = await generateImage({
-  prompt: "A neon cyberpunk city at night",
-  model: "MODEL_GPT_IMAGE_2",
-  quality: "high",
-});
-```
-
-When selecting a different model, omit `quality` unless that model supports the value you want to send.
-
-### Listing available models
-
-```ts
-import { listImageModels } from "./server/_core/imageGeneration.ts";
+import { generateImage, listImageModels } from "./server/_core/imageGeneration";
 
 const { models } = await listImageModels();
-// e.g. [{ model: "MODEL_GPT_IMAGE_2", id: "gpt-image-2" }, ...]
+const selected = models.find((item) => item.id === requestedModelId);
+if (!selected) throw new Error("Requested image model is unavailable");
+
+const result = await generateImage({ prompt, model: selected.model });
 ```
 
-Feed a `model` value from this list into `generateImage({ model })`.
+## السلامة والجودة
 
-Tips
-- Always call from server-side code (e.g., inside tRPC procedures) to avoid exposing API keys
-- Image generation can take 5-20 seconds, implement proper loading states
-- Implement proper error handling as image generation can fail
+اطلب من المستخدم تأكيد حقه في الصورة المرجعية عند التحرير، ولا تقدم نتيجة مولدة بوصفها وثيقة أو دليلًا فوتوغرافيًا. صمّم واجهة توضح أن الناتج مولّد وأنها قد تحتاج مراجعة بشرية، خاصة في صور الأشخاص أو العلامات أو المنتجات أو النصوص المرئية.
+
+لا تسجل صور المستخدم أو prompt كاملًا في سجل تشخيص عام. احمِ رابط المصدر والنتيجة بسياسة الوصول المناسبة، ولا تفترض أن URL من الخدمة مناسب للعرض الدائم أو العام.
+
+## التحقق
+
+اختبر توليدًا بنموذج متاح، ونموذجًا اختفى من الكتالوج، ورابط تحرير غير صالح أو غير مسموح، وفشل خدمة مؤقت، ونقرتين متتاليتين لنفس الطلب. تحقق من أن الواجهة لا تعرض نجاحًا قبل وجود الناتج وأن العميل لا يصل إلى بيانات اعتماد الخدمة.

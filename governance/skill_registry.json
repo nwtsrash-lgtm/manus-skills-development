@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:10:06+00:00",
+  "generated_at": "2026-08-13T01:17:13+00:00",
   "policy": "Operational quality is prioritized over ownership metadata. Refresh source-sensitive skills in their relevant development wave.",
   "skills": [
     {
@@ -178,8 +178,8 @@
       "name": "webdev-data-api",
       "path": "skills/webdev-data-api",
       "risk_level": "high",
-      "status": "needs_work",
-      "baseline_score": 30,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-data-api.json"
     },
@@ -187,8 +187,8 @@
       "name": "webdev-file-storage",
       "path": "skills/webdev-file-storage",
       "risk_level": "high",
-      "status": "needs_work",
-      "baseline_score": 30,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-file-storage.json"
     },
@@ -196,8 +196,8 @@
       "name": "webdev-image-generation",
       "path": "skills/webdev-image-generation",
       "risk_level": "medium",
-      "status": "needs_work",
-      "baseline_score": 55,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-image-generation.json"
     },
@@ -205,8 +205,8 @@
       "name": "webdev-llm-integration",
       "path": "skills/webdev-llm-integration",
       "risk_level": "medium",
-      "status": "needs_work",
-      "baseline_score": 45,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-llm-integration.json"
     },
@@ -214,8 +214,8 @@
       "name": "webdev-manus-oauth",
       "path": "skills/webdev-manus-oauth",
       "risk_level": "high",
-      "status": "needs_work",
-      "baseline_score": 55,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-manus-oauth.json"
     },
@@ -223,8 +223,8 @@
       "name": "webdev-maps-integration",
       "path": "skills/webdev-maps-integration",
       "risk_level": "high",
-      "status": "needs_work",
-      "baseline_score": 40,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-maps-integration.json"
     },
@@ -232,8 +232,8 @@
       "name": "webdev-owner-notifications",
       "path": "skills/webdev-owner-notifications",
       "risk_level": "high",
-      "status": "needs_work",
-      "baseline_score": 50,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-owner-notifications.json"
     },
@@ -295,8 +295,8 @@
       "name": "webdev-voice-transcription",
       "path": "skills/webdev-voice-transcription",
       "risk_level": "medium",
-      "status": "needs_work",
-      "baseline_score": 35,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/webdev-voice-transcription.json"
     }

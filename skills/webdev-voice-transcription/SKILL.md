@@ -1,31 +1,34 @@
 ---
 name: webdev-voice-transcription
-description: Manus webdev fullstack (web-db-user) & mobile-app (Expo) projects — speech-to-text via the built-in Whisper API.
+description: تحويل ملفات صوت المستخدم إلى نص في تطبيقات Manus WebDev الكاملة أو Expo عبر مساعد النسخ الصوتي المضمن. استخدمها بعد رفع ملف صوت مصرح به إلى رابط موثوق؛ ولا تستخدمها لتمرير ملف من العميل مباشرة أو لنسخ صوت لا يملك المستخدم حق معالجته.
 ---
 
-## Voice Transcription Integration
+# النسخ الصوتي
 
-Use the preconfigured voice transcription helper that converts speech to text using Whisper API, no manual setup required.
+## قبل الاستدعاء
 
-Example usage:
+ارفع الملف أولًا إلى تخزين موثوق، ثم استدعِ `transcribeAudio` من الخادم برابط الملف. تحقق من تفويض المستخدم للوصول إلى السجل الصوتي، وحجم الملف وصيغته قبل بدء النسخ. الحد المذكور في عقد الخدمة هو 16 MB، والصيغ المدعومة هي `webm` و`mp3` و`wav` و`ogg` و`m4a`؛ لا تفترض أن المتصفح أو الامتداد وحده يثبتان الصيغة.
+
+استخدم `language` عندما تعرف لغة الصوت لتحسين الدقة، وقدم `prompt` كسياق قصير غير حساس فقط. لا تضع سرًا أو نصًا خاصًا غير ضروري في prompt.
+
+## سير العمل
+
+1. صادق المستخدم واربط ملف الصوت بسجل يملكه أو يملك حق معالجته.
+2. افحص الحجم والنوع ومدة الالتقاط إن كان التطبيق يفرض حدًا، وارفض غير المناسب قبل استدعاء الخدمة.
+3. استدعِ helper خادميًا وسجل الحالة: مرفوع، قيد النسخ، نجح، أو فشل. لا تكرر طلبًا قائمًا لنفس الملف.
+4. احفظ `text` و`language` و`segments` وفق سياسة الاحتفاظ والخصوصية. لا تعرض المقاطع أو النص لطرف آخر بلا تفويض.
+5. اعرض تقدمًا منطقيًا وحالة فشل قابلة للتصرف، ولا تقدم نتيجة جزئية كأنها تفريغ كامل ما لم يصرح العقد بذلك.
+
 ```ts
 import { transcribeAudio } from "./server/_core/voiceTranscription";
 
 const result = await transcribeAudio({
-  audioUrl: "https://storage.example.com/audio/recording.mp3",
-  language: "en", // Optional: helps improve accuracy
-  prompt: "Transcribe meeting notes" // Optional: context hint
+  audioUrl: storedAudioUrl,
+  language: requestedLanguage,
+  prompt: "Meeting notes about the product roadmap"
 });
-
-// Returns native Whisper API response
-// result.text - Full transcription
-// result.language - Detected language (ISO-639-1)
-// result.segments - Timestamped segments with metadata
 ```
 
-Tips
-- Accepts URL to pre-uploaded audio file
-- 16MB file size limit enforced during transcription, size flag to be set by frontend
-- Supported formats: webm, mp3, wav, ogg, m4a
-- Returns native Whisper API response with rich metadata
-- Frontend should handle audio capture, storage upload, and size validation
+## الخصوصية والتحقق
+
+الصوت والنص المفرغ قد يحملان بيانات شخصية أو تجارية؛ قلل مدة الاحتفاظ، وامنع إدراجهما في سجلات التشخيص، ووضح للمستخدم غرض المعالجة. اختبر ملفًا مدعومًا، وحجمًا زائدًا، ونوعًا غير مدعوم، ورابطًا لا يملكه المستخدم، وفشل خدمة مؤقت، ونتيجة تتضمن مقاطع زمنية. تأكد أن العميل لا يصل إلى بيانات اعتماد الخدمة ولا يمكنه نسخ ملف مستخدم آخر عبر تبديل URL.

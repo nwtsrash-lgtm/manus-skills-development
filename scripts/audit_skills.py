@@ -58,7 +58,7 @@ def has_workflow(text: str) -> bool:
     markers = (
         "workflow", "process", "checklist", "step ", "step:",
         "routing", "decision", "quick check", "procedure",
-        "سير العمل", "دورة التطوير", "خطوة ", "الخطوات", "مسار قرار", "قائمة تحقق",
+        "سير العمل", "دورة التطوير", "دورة حياة", "مسار الاختيار", "تسجيل الدخول", "خطوة ", "الخطوات", "مسار قرار", "قائمة تحقق",
     )
     lowered = text.lower()
     return any(marker in lowered for marker in markers)

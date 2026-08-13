@@ -1,21 +1,29 @@
 ---
 name: webdev-maps-integration
-description: Manus webdev fullstack (web-db-user) projects — Google Maps integration for maps, geocoding, directions, places.
+description: دمج خرائط Google والترميز الجغرافي والاتجاهات والأماكن في مشاريع Manus WebDev الكاملة عبر MapView وطبقة الخادم المضمنة. استخدمها عند عرض موقع أو تنفيذ بحث مكان أو اتجاهات أو عملية خرائط؛ ولا تستخدمها لطلب مفتاح Google من المستخدم أو لتخزين موقع حساس بلا غرض وصلاحية ومدة احتفاظ محددة.
 ---
 
-## 🗺️ Maps Integration
+# تكامل الخرائط
 
-**CRITICAL: The Manus proxy provides FULL access to ALL Google Maps features** - including advanced drawing, heatmaps, Street View, all layers, Places API, etc. Do NOT ask users for Google Map API keys - authentication is automatic.
+## اختيار مكان التنفيذ
 
-**Default: Use Frontend SDK** - Import MapView from `client/src/components/Map.tsx` and initialize ANY Google Maps service (geocoding, directions, places, drawing, visualization, geometry, etc.) in the onMapReady callback. 
+استخدم `MapView` من `client/src/components/Map.tsx` للعرض التفاعلي والبحث الذي يحتاج استجابة فورية للمستخدم. استخدم `makeRequest` في `server/_core/map.ts` عندما يتطلب الطلب منطقًا تجاريًا أو تخزينًا أو cache أو دفعات أو جدولة أو إخفاء تفاصيل المورد. لا تضف مكتبة خرائط خارجية أو مفتاح Google يدويًا؛ تستخدم البيئة طبقة Manus المهيأة.
 
-**Use Backend API only when:**
-- Persisting data (save routes/locations to database)
-- Bulk operations (1000+ addresses)
-- Server-side needs (caching, scheduled jobs, hiding business logic)
+| الحالة | التنفيذ |
+|---|---|
+| عرض نقطة أو مسار يحدده المستخدم فورًا | العميل عبر MapView بعد تحقق محلي من المدخل. |
+| حفظ عنوان أو مسار في سجل تطبيق | إجراء خادمي مع تفويض المستخدم وميتاداتا الحداثة. |
+| ترميز مئات العناوين أو تحديث دوري | دفعات خادمية بمعدل محدود وcache ومراقبة. |
+| موقع حساس أو مباشر | اجمع أقل دقة لازمة، واطلب موافقة، وحدد زمن الاحتفاظ والوصول. |
 
-**Implementation:**
-- Frontend: See `client/src/components/Map.tsx` for component usage - ALL Google Maps JavaScript API features work
-- Backend: Create tRPC procedures using `makeRequest` from `server/_core/map.ts`
+## سير العمل
 
-NEVER use external map libraries or request API keys from users - the Manus proxy handles everything automatically with no feature limitations.
+1. حدد الغرض ودقة الموقع المطلوبة، ولا تجمع إحداثيات دقيقة إذا كان اسم مدينة أو منطقة يكفي.
+2. تحقق من إدخال المكان أو الإحداثيات وحدود النتائج قبل الطلب، وأعد للمستخدم نتيجة لا لبس فيها أو اطلب اختيارًا عندما يكون الاسم متشابهًا.
+3. نفذ cache للترميز أو الاتجاهات بحسب معلمات الطلب ومصدره ووقت الحداثة. لا تستعمل نتيجة قديمة كمسار لحظي أو حالة مرور راهنة.
+4. خزّن في قاعدة البيانات فقط ما يحتاجه المنتج مع مالك السجل وسياسة وصول. لا تسجل سلسلة عنوان كاملة أو إحداثيات شخصية في سجلات تشخيص عامة.
+5. في الدفعات، حد من التوازي وحجم الجزء، واجعل التشغيل قابلاً للاستئناف ولا تعيد معالجة السجلات الناجحة بلا حاجة.
+
+## الأخطاء والتحقق
+
+عالج صفر نتائج، ونتائج متعددة، وقيود الحصة أو البطء، وانقطاع الشبكة، وفشل الإذن بصورة مختلفة. لا تختر أول نتيجة تلقائيًا عند وجود التباس يؤثر في المستخدم. اختبر خريطة تفاعلية، ومدخلًا مبهمًا، وموقعًا غير مصرح، ودفعة مقطوعة ثم مستأنفة، وتأكد أن العميل لا يملك سرًا أو تفاصيل عملية الدفعات.
