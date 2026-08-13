@@ -1,13 +1,13 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T01:52:05+00:00`
+Generated: `2026-08-13T01:52:53+00:00`
 
-The audit inspected **33** skills. **24** passed all current gates; the remainder form the development backlog.
+The audit inspected **33** skills. **25** passed all current gates; the remainder form the development backlog.
 
 | Skill | Risk | Lines | Score | Status | First actionable gap |
 |---|---|---:|---:|---|---|
 | `automation-and-scheduling` | high | 116 | 90/100 | approved | None |
-| `builtin-llm-models` | medium | 337 | 55/100 | needs_work | invocation: test card is missing |
+| `builtin-llm-models` | medium | 337 | 90/100 | approved | None |
 | `excel-generator` | low | 24 | 90/100 | approved | None |
 | `finance-pro-playbooks` | medium | 201 | 90/100 | approved | None |
 | `game-dev` | medium | 56 | 90/100 | approved | None |

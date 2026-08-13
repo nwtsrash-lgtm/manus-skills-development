@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:52:05+00:00",
+  "generated_at": "2026-08-13T01:52:53+00:00",
   "policy": "Operational quality is prioritized over ownership metadata. Refresh source-sensitive skills in their relevant development wave.",
   "skills": [
     {
@@ -16,8 +16,8 @@
       "name": "builtin-llm-models",
       "path": "skills/builtin-llm-models",
       "risk_level": "medium",
-      "status": "needs_work",
-      "baseline_score": 55,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/builtin-llm-models.json"
     },

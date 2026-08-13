@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:52:05+00:00",
+  "generated_at": "2026-08-13T01:52:53+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 24,
-    "needs_work_count": 9
+    "approved_count": 25,
+    "needs_work_count": 8
   },
   "skills": [
     {
@@ -72,40 +72,38 @@
         "description": "Reference for Manus's built-in LLM catalog and how to call it correctly. Read this BEFORE writing any script that calls LLMs in bulk (summarization, translation, classification, extraction, deep analysis, judging/evaluation, map/parallel fan-out) inside the sandbox, AND before using the built-in LLM in a webdev project (invokeLLM / listLLMModels). Use it to discover which models exist, each model's price/capabilities, how to pick one, the exact request shapes (thinking/reasoning, JSON-schema structured output, vision, tools), and the per-model gotchas (max-token handling, reasoning syntax) verified against the live proxy."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 55,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
           "337 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -114,11 +112,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "excel-generator",
