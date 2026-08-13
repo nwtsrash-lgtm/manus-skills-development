@@ -50,3 +50,7 @@ Follow these stages in order. On resume, if `PLAN.md` already exists in the proj
 - Do NOT commit large image assets into the WebDev project tree (deploy timeout). Always go through `manus-upload-file --webdev` and reference the returned URL.
 - Import Babylon from deep module paths to keep the bundle small.
 - Babylon needs a non-zero-size canvas; the full-screen `fixed inset-0` canvas in the template handles this. Call `engine.resize()` on window resize.
+
+## Safety and release verification
+
+Do not ship a game that depends on an unverified generated asset, an exposed secret, or an untested external service. Keep a playable fallback for every critical asset, validate input and saved score data on the server when applicable, and run a desktop-browser smoke test for load, input, restart, and error handling before publishing.

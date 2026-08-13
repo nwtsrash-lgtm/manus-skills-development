@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:25:11+00:00",
+  "generated_at": "2026-08-13T01:47:33+00:00",
   "policy": "Operational quality is prioritized over ownership metadata. Refresh source-sensitive skills in their relevant development wave.",
   "skills": [
     {
@@ -43,8 +43,8 @@
       "name": "game-dev",
       "path": "skills/game-dev",
       "risk_level": "medium",
-      "status": "needs_work",
-      "baseline_score": 45,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/game-dev.json"
     },
