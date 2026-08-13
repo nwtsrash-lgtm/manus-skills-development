@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:57:11+00:00",
+  "generated_at": "2026-08-13T03:08:29+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 29,
-    "needs_work_count": 4
+    "approved_count": 30,
+    "needs_work_count": 3
   },
   "skills": [
     {
@@ -1443,11 +1443,11 @@
       "skill": "webdev-readme-fullstack",
       "path": "skills/webdev-readme-fullstack",
       "risk_level": "medium",
-      "line_count": 854,
-      "word_count": 4362,
+      "line_count": 37,
+      "word_count": 397,
       "frontmatter": {
         "name": "webdev-readme-fullstack",
-        "description": "Manus webdev fullstack (web-db-user) projects — the complete development guide for the template that fullstack webdev projects are built on. Covers what ships out of the box (user auth, database, file storage, backend API, external integrations), coding conventions, file layout, and the map of per-integration skill docs. The same guide arrives auto-injected in webdev_init_project / webdev_add_feature results."
+        "description": "دليل تشغيل قالب Manus WebDev الكامل الذي يوفر React وTypeScript وخادم Express وtRPC وقاعدة بيانات ومصادقة وتخزين. استخدمه عند بناء أو تعديل تطبيق WebDev يحتاج بيانات أو مستخدمين أو عمليات خادمية؛ ولا تستخدمه لموقع ثابت أو تطبيق هاتف أو خدمة خارج بيئة WebDev."
       },
       "test_card": {
         "present": true,
@@ -1459,14 +1459,14 @@
         "structural_integrity": 15,
         "invocation_boundaries": 15,
         "workflow": 20,
-        "progressive_disclosure": 0,
+        "progressive_disclosure": 15,
         "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 75,
+      "score": 90,
       "mandatory_gates_passed": true,
-      "status": "needs_work",
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
@@ -1478,7 +1478,7 @@
           "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "854 lines exceeds 500; split or record an exception"
+          "37 lines"
         ],
         "verification": [
           "verification marker and valid test card"
@@ -1490,9 +1490,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "854 lines exceeds 500; split or record an exception"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-readme-mobile",
