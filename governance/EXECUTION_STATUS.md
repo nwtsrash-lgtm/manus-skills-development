@@ -23,13 +23,14 @@
 | Typst document behavior coverage | Complete and approved |
 | Google Workspace behavior coverage | Complete and approved |
 | Manus PPTX behavior coverage | Complete and approved |
+| WebDev guide behavior coverage | Complete; four long-guide refactors remain documented exceptions before release |
 
 ## Current measurement
 
-The latest audit records **28 approved skills out of 33**. Remaining skills require the same review cycle: confirm scope, add or refine behavior cards, address explicit workflow/verification/safety gaps, validate, and re-run the audit. A `needs_work` status is a backlog signal, not evidence that the existing skill is unusable.
+The latest audit records **29 approved skills out of 33**, with four documented long-guide exceptions pending progressive-disclosure refactors. Remaining skills require the same review cycle: confirm scope, add or refine behavior cards, address explicit workflow/verification/safety gaps, validate, and re-run the audit. A `needs_work` status is a backlog signal, not evidence that the existing skill is unusable.
 
 ## Remaining release work
 
-1. Review the remaining specialized and media/document skills, including long WebDev template guides, using progressive disclosure where a core exceeds 500 lines.
-2. Add behavior cards and targeted safety or failure guidance where the audit identifies missing evidence.
-3. Run all structural validators and behavior-card checks, review the final audit, scan for secrets, and tag a release only when every skill is approved or has a documented exception.
+1. Refactor the four documented long WebDev guides into short routing cores plus linked references; their exceptions expire before a release.
+2. Re-run all structural validators and behavior-card checks, then scan for secrets.
+3. Tag a release only when every skill is approved or has a documented exception that is explicitly acceptable for that release.
