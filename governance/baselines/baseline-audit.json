@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:47:33+00:00",
+  "generated_at": "2026-08-13T01:49:24+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 21,
-    "needs_work_count": 12
+    "approved_count": 22,
+    "needs_work_count": 11
   },
   "skills": [
     {
@@ -890,60 +890,54 @@
       "skill": "tts-prompter",
       "path": "skills/tts-prompter",
       "risk_level": "low",
-      "line_count": 247,
-      "word_count": 2485,
+      "line_count": 251,
+      "word_count": 2548,
       "frontmatter": {
         "name": "tts-prompter",
         "description": "MUST read this skill BEFORE entering generate mode for text-to-speech (TTS) tasks. Covers prompt crafting framework, separating spoken text from style instructions, and using markup tags vs natural language for emotions and non-speech sounds."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
-        "failure_and_safety": 0,
+        "verification": 15,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 45,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "247 lines"
+          "251 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "typst-pdf-maker",

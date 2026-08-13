@@ -245,3 +245,7 @@ Under other delivery styles (excited announcer, ASMR whisper, news anchor, etc.)
 | Swedish (Sweden) | sv-SE | words | 1.8 |
 | Urdu (Pakistan) | ur-PK | words | 2.2 |
 
+
+## Verification and safety
+
+Before delivery, review the spoken text, pronunciation of names and numbers, language selection, and any markup that controls pauses or emotion. Do not clone or imply the identity of a real person's voice without documented permission. Keep personal or confidential source text out of public examples and do not treat generated speech as consent, evidence, or an official recording.
