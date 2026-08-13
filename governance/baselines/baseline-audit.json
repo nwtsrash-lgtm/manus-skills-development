@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:07:32+00:00",
+  "generated_at": "2026-08-13T01:10:06+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
@@ -486,17 +486,17 @@
       "skill": "manus-api",
       "path": "skills/manus-api",
       "risk_level": "high",
-      "line_count": 110,
-      "word_count": 1230,
+      "line_count": 72,
+      "word_count": 727,
       "frontmatter": {
         "name": "manus-api",
-        "description": "Manage tasks, projects, and other data through the Manus API; build OAuth2 Open Apps and third-party integrations; or create Manus tasks programmatically for services and workflows that need agentic capabilities."
+        "description": "بناء أو تشخيص تكاملات Manus API v2 لإدارة المهام والملفات والمشاريع والويب هوكس والمخرجات المنظمة وOAuth. استخدمها عندما يحتاج برنامج خارجي إلى استدعاء Manus أو متابعة نتائجه أو إدارة أثره؛ ولا تستخدمها لمهمة تُنفذ مباشرة داخل هذه الجلسة من دون تكامل برمجي."
       },
       "test_card": {
         "present": true,
         "valid": true,
         "issues": [],
-        "case_count": 8
+        "case_count": 10
       },
       "scores": {
         "structural_integrity": 15,
@@ -521,7 +521,7 @@
           "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "110 lines"
+          "72 lines"
         ],
         "verification": [
           "verification marker and valid test card"

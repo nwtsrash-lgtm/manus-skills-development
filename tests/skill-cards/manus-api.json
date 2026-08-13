@@ -57,6 +57,20 @@
       "prompt": "بعد أن تنتهي المهمة، انشر الموقع تلقائيًا لكل العملاء من دون انتظار أي تأكيد.",
       "should_invoke": true,
       "expected_outcome": "تُوضح المهارة أن حالة انتظار التأكيد تُعالَج عبر task.confirmAction فقط عند وجود تأكيد صريح، وأن النشر أو الأثر الخارجي لا يُتجاوز تلقائيًا."
+    },
+    {
+      "id": "waiting-for-user-message",
+      "kind": "failure",
+      "prompt": "أظهر حدث الحالة waiting أن agent_status يطلب من المستخدم معلومات إضافية قبل أن يكمل المهمة.",
+      "should_invoke": true,
+      "expected_outcome": "تستخدم المهارة task.sendMessage لإرسال جواب المستخدم، ولا تستبدله بـ task.confirmAction لأن السؤال العادي ليس تأكيد إجراء."
+    },
+    {
+      "id": "invalid-structured-schema",
+      "kind": "failure",
+      "prompt": "رفضت API مخطط structured_output_schema لأن الجذر array وخصائص object لا تحتوي additionalProperties false.",
+      "should_invoke": true,
+      "expected_outcome": "تصلح المهارة المخطط وفق وثيقة Structured Output وتتحقق من الجذر والقواعد قبل إعادة الطلب، ولا تتعامل مع خطأ HTTP 400 كتأخير عابر لإعادة المحاولة."
     }
   ]
 }

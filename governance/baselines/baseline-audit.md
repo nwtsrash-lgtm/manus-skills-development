@@ -1,6 +1,6 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T01:07:32+00:00`
+Generated: `2026-08-13T01:10:06+00:00`
 
 The audit inspected **33** skills. **3** passed all current gates; the remainder form the development backlog.
 
@@ -14,7 +14,7 @@ The audit inspected **33** skills. **3** passed all current gates; the remainder
 | `gws-best-practices` | low | 88 | 55/100 | needs_work | invocation: test card is missing |
 | `imagegen` | medium | 150 | 55/100 | needs_work | invocation: test card is missing |
 | `intelligent-free-cloud-architect` | medium | 154 | 55/100 | needs_work | invocation: test card is missing |
-| `manus-api` | high | 110 | 90/100 | approved | None |
+| `manus-api` | high | 72 | 90/100 | approved | None |
 | `manus-config` | high | 253 | 55/100 | needs_work | invocation: test card is missing |
 | `manus-pptx` | low | 279 | 45/100 | needs_work | invocation: test card is missing |
 | `music-prompter` | low | 135 | 45/100 | needs_work | invocation: test card is missing |
