@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:20:59+00:00",
+  "generated_at": "2026-08-13T01:22:30+00:00",
   "policy": "Operational quality is prioritized over ownership metadata. Refresh source-sensitive skills in their relevant development wave.",
   "skills": [
     {
@@ -25,8 +25,8 @@
       "name": "excel-generator",
       "path": "skills/excel-generator",
       "risk_level": "low",
-      "status": "needs_work",
-      "baseline_score": 40,
+      "status": "approved",
+      "baseline_score": 90,
       "source_category": "bundled_baseline",
       "test_card": "tests/skill-cards/excel-generator.json"
     },

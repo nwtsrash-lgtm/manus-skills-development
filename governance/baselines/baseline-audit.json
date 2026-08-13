@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:20:59+00:00",
+  "generated_at": "2026-08-13T01:22:30+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 17,
-    "needs_work_count": 16
+    "approved_count": 18,
+    "needs_work_count": 15
   },
   "skills": [
     {
@@ -124,47 +124,45 @@
       "skill": "excel-generator",
       "path": "skills/excel-generator",
       "risk_level": "low",
-      "line_count": 674,
-      "word_count": 3421,
+      "line_count": 24,
+      "word_count": 271,
       "frontmatter": {
         "name": "excel-generator",
-        "description": "Professional Excel spreadsheet creation with a focus on aesthetics and data analysis. Use when creating spreadsheets for organizing, analyzing, and presenting structured data in a clear and professional format. For finance/valuation/modeling deliverables (DCF, LBO, comps, 3-statement models, DD trackers), defer to finance-pro-playbooks and its formats/excel_standards.md instead — do not apply this skill's aesthetics to those outputs."
+        "description": "إنشاء وتعديل جداول Excel احترافية لتنظيم البيانات وتحليلها وعرضها بوضوح. استخدمها عند طلب workbook أو tracker أو تحليل جدولي أو لوحة بيانات؛ ولا تستخدمها لنمذجة مالية احترافية مثل DCF أو LBO أو Comps، إذ تتبع تلك المخرجات مهارة finance-pro-playbooks ومعاييرها."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
-        "progressive_disclosure": 0,
-        "verification": 5,
+        "invocation_boundaries": 15,
+        "workflow": 20,
+        "progressive_disclosure": 15,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 40,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "674 lines exceeds 500; split or record an exception"
+          "24 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -173,12 +171,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "674 lines exceeds 500; split or record an exception",
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "finance-pro-playbooks",
