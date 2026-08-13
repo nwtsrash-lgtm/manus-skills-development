@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:49:24+00:00",
+  "generated_at": "2026-08-13T01:50:25+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 22,
-    "needs_work_count": 11
+    "approved_count": 23,
+    "needs_work_count": 10
   },
   "skills": [
     {
@@ -613,60 +613,54 @@
       "skill": "music-prompter",
       "path": "skills/music-prompter",
       "risk_level": "low",
-      "line_count": 135,
-      "word_count": 1742,
+      "line_count": 139,
+      "word_count": 1796,
       "frontmatter": {
         "name": "music-prompter",
         "description": "MUST read this skill BEFORE entering generate mode for music tasks. Covers prompt crafting framework, structure syntax, and multi-clip strategy."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
-        "failure_and_safety": 0,
+        "verification": 15,
+        "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 45,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
-          "135 lines"
+          "139 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
-          "no explicit failure or safety guidance found"
+          "failure or safety guidance found"
         ],
         "source_freshness": [
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "persistent-computing",

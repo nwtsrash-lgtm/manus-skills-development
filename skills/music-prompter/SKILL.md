@@ -133,3 +133,7 @@ The core principle is **Precise State Alignment**: use timestamp cues to ensure 
 
 ### Step 4: Post-Processing
 Use `ffmpeg` via the shell tool to apply crossfades between the clips. With precise state alignment via timestamps, shorter crossfades (0.5-1s) are usually sufficient. Calculate the crossfade duration to align with the beat grid based on the BPM (e.g., at 120 BPM, 1 beat = 0.5s, so a 2-beat crossfade = 1.0s).
+
+## Verification and safety
+
+Before delivery, check that duration, structure, instrumentation, energy, and intended use match the request. Do not request or promise a replica of a living artist's voice, identity, or signature song. Keep user-provided private audio and lyrics out of public examples, and label generated audio as generated when that distinction matters.
