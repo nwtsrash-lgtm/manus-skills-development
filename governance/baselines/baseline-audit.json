@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-08-13T01:52:53+00:00",
+  "generated_at": "2026-08-13T01:54:05+00:00",
   "quality_gates": "governance/quality_gates.json",
   "summary": {
     "skill_count": 33,
-    "approved_count": 25,
-    "needs_work_count": 8
+    "approved_count": 26,
+    "needs_work_count": 7
   },
   "skills": [
     {
@@ -932,40 +932,38 @@
         "description": "Generate professional, high-quality PDF documents with Typst. Use for reports, academic papers, resumes, structured documents, mathematical typesetting, code-rich documents, precise layouts, and CJK typography when Markdown-to-PDF is insufficient. Select one skill-owned asset or compatible Typst Universe base before adding packages. Route ordinary presentation requests to Manus Slides/PPTX unless the user explicitly requires Typst-generated PDF slides."
       },
       "test_card": {
-        "present": false,
-        "valid": false,
-        "issues": [
-          "test card is missing"
-        ],
-        "case_count": 0
+        "present": true,
+        "valid": true,
+        "issues": [],
+        "case_count": 3
       },
       "scores": {
         "structural_integrity": 15,
-        "invocation_boundaries": 0,
-        "workflow": 10,
+        "invocation_boundaries": 15,
+        "workflow": 20,
         "progressive_disclosure": 15,
-        "verification": 5,
+        "verification": 15,
         "failure_and_safety": 10,
         "source_freshness": 0
       },
-      "score": 55,
-      "mandatory_gates_passed": false,
-      "status": "needs_work",
+      "score": 90,
+      "mandatory_gates_passed": true,
+      "status": "approved",
       "evidence": {
         "structural_integrity": [
           "valid metadata and links"
         ],
         "invocation_boundaries": [
-          "test card is missing"
+          "description plus valid positive/negative test cases"
         ],
         "workflow": [
-          "workflow marker found; test card missing or invalid"
+          "workflow marker and valid expected outcomes"
         ],
         "progressive_disclosure": [
           "192 lines"
         ],
         "verification": [
-          "verification marker found; test card missing or invalid"
+          "verification marker and valid test card"
         ],
         "failure_and_safety": [
           "failure or safety guidance found"
@@ -974,11 +972,7 @@
           "baseline: source freshness not yet recorded"
         ]
       },
-      "issues": [
-        "invocation: test card is missing",
-        "verification: verification marker found; test card missing or invalid",
-        "workflow: workflow marker found; test card missing or invalid"
-      ]
+      "issues": []
     },
     {
       "skill": "webdev-custom-dockerfile",

@@ -1,8 +1,8 @@
 # Skills Baseline Audit
 
-Generated: `2026-08-13T01:52:53+00:00`
+Generated: `2026-08-13T01:54:05+00:00`
 
-The audit inspected **33** skills. **25** passed all current gates; the remainder form the development backlog.
+The audit inspected **33** skills. **26** passed all current gates; the remainder form the development backlog.
 
 | Skill | Risk | Lines | Score | Status | First actionable gap |
 |---|---|---:|---:|---|---|
@@ -23,7 +23,7 @@ The audit inspected **33** skills. **25** passed all current gates; the remainde
 | `skill-creator` | medium | 68 | 90/100 | approved | None |
 | `systematic-debugging` | medium | 60 | 90/100 | approved | None |
 | `tts-prompter` | low | 251 | 90/100 | approved | None |
-| `typst-pdf-maker` | low | 192 | 55/100 | needs_work | invocation: test card is missing |
+| `typst-pdf-maker` | low | 192 | 90/100 | approved | None |
 | `webdev-custom-dockerfile` | high | 122 | 90/100 | approved | None |
 | `webdev-data-api` | high | 37 | 90/100 | approved | None |
 | `webdev-file-storage` | high | 38 | 90/100 | approved | None |
