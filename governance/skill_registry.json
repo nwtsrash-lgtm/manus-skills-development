@@ -1,0 +1,295 @@
+{
+  "schema_version": "0.1.0",
+  "generated_at": "2026-08-13T00:42:33+00:00",
+  "policy": "Operational quality is prioritized over ownership metadata. Refresh source-sensitive skills in their relevant development wave.",
+  "skills": [
+    {
+      "name": "automation-and-scheduling",
+      "path": "skills/automation-and-scheduling",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/automation-and-scheduling.json"
+    },
+    {
+      "name": "builtin-llm-models",
+      "path": "skills/builtin-llm-models",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/builtin-llm-models.json"
+    },
+    {
+      "name": "excel-generator",
+      "path": "skills/excel-generator",
+      "risk_level": "low",
+      "status": "needs_work",
+      "baseline_score": 40,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/excel-generator.json"
+    },
+    {
+      "name": "finance-pro-playbooks",
+      "path": "skills/finance-pro-playbooks",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/finance-pro-playbooks.json"
+    },
+    {
+      "name": "game-dev",
+      "path": "skills/game-dev",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/game-dev.json"
+    },
+    {
+      "name": "gws-best-practices",
+      "path": "skills/gws-best-practices",
+      "risk_level": "low",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/gws-best-practices.json"
+    },
+    {
+      "name": "imagegen",
+      "path": "skills/imagegen",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/imagegen.json"
+    },
+    {
+      "name": "intelligent-free-cloud-architect",
+      "path": "skills/intelligent-free-cloud-architect",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/intelligent-free-cloud-architect.json"
+    },
+    {
+      "name": "manus-api",
+      "path": "skills/manus-api",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/manus-api.json"
+    },
+    {
+      "name": "manus-config",
+      "path": "skills/manus-config",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/manus-config.json"
+    },
+    {
+      "name": "manus-pptx",
+      "path": "skills/manus-pptx",
+      "risk_level": "low",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/manus-pptx.json"
+    },
+    {
+      "name": "music-prompter",
+      "path": "skills/music-prompter",
+      "risk_level": "low",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/music-prompter.json"
+    },
+    {
+      "name": "persistent-computing",
+      "path": "skills/persistent-computing",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/persistent-computing.json"
+    },
+    {
+      "name": "read-special-images",
+      "path": "skills/read-special-images",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/read-special-images.json"
+    },
+    {
+      "name": "skill-creator",
+      "path": "skills/skill-creator",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/skill-creator.json"
+    },
+    {
+      "name": "tts-prompter",
+      "path": "skills/tts-prompter",
+      "risk_level": "low",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/tts-prompter.json"
+    },
+    {
+      "name": "typst-pdf-maker",
+      "path": "skills/typst-pdf-maker",
+      "risk_level": "low",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/typst-pdf-maker.json"
+    },
+    {
+      "name": "webdev-custom-dockerfile",
+      "path": "skills/webdev-custom-dockerfile",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-custom-dockerfile.json"
+    },
+    {
+      "name": "webdev-data-api",
+      "path": "skills/webdev-data-api",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 30,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-data-api.json"
+    },
+    {
+      "name": "webdev-file-storage",
+      "path": "skills/webdev-file-storage",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 30,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-file-storage.json"
+    },
+    {
+      "name": "webdev-image-generation",
+      "path": "skills/webdev-image-generation",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-image-generation.json"
+    },
+    {
+      "name": "webdev-llm-integration",
+      "path": "skills/webdev-llm-integration",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 45,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-llm-integration.json"
+    },
+    {
+      "name": "webdev-manus-oauth",
+      "path": "skills/webdev-manus-oauth",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-manus-oauth.json"
+    },
+    {
+      "name": "webdev-maps-integration",
+      "path": "skills/webdev-maps-integration",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 40,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-maps-integration.json"
+    },
+    {
+      "name": "webdev-owner-notifications",
+      "path": "skills/webdev-owner-notifications",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 50,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-owner-notifications.json"
+    },
+    {
+      "name": "webdev-periodic-updates",
+      "path": "skills/webdev-periodic-updates",
+      "risk_level": "high",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-periodic-updates.json"
+    },
+    {
+      "name": "webdev-readme-fullstack",
+      "path": "skills/webdev-readme-fullstack",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 40,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-readme-fullstack.json"
+    },
+    {
+      "name": "webdev-readme-mobile",
+      "path": "skills/webdev-readme-mobile",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 40,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-readme-mobile.json"
+    },
+    {
+      "name": "webdev-readme-mobile-backend",
+      "path": "skills/webdev-readme-mobile-backend",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 40,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-readme-mobile-backend.json"
+    },
+    {
+      "name": "webdev-readme-static",
+      "path": "skills/webdev-readme-static",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 40,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-readme-static.json"
+    },
+    {
+      "name": "webdev-ssr-conversion",
+      "path": "skills/webdev-ssr-conversion",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 55,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-ssr-conversion.json"
+    },
+    {
+      "name": "webdev-voice-transcription",
+      "path": "skills/webdev-voice-transcription",
+      "risk_level": "medium",
+      "status": "needs_work",
+      "baseline_score": 35,
+      "source_category": "bundled_baseline",
+      "test_card": "tests/skill-cards/webdev-voice-transcription.json"
+    }
+  ]
+}

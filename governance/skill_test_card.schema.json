@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill Test Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["skill", "version", "cases"],
+  "properties": {
+    "skill": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "prompt", "should_invoke", "expected_outcome"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "kind": {
+            "enum": ["positive", "negative", "failure", "safety"]
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 12
+          },
+          "should_invoke": {
+            "type": "boolean"
+          },
+          "expected_outcome": {
+            "type": "string",
+            "minLength": 12
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

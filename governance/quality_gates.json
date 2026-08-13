@@ -1,0 +1,90 @@
+{
+  "version": "0.1.0",
+  "purpose": "Measure operational readiness of Manus skills without requiring ownership metadata.",
+  "approval_threshold": 85,
+  "mandatory_gates": [
+    "structural_integrity",
+    "invocation_boundaries",
+    "workflow",
+    "verification"
+  ],
+  "dimensions": [
+    {
+      "id": "structural_integrity",
+      "weight": 15,
+      "mandatory": true,
+      "evidence": [
+        "SKILL.md exists in the skill root",
+        "YAML frontmatter has name and description",
+        "name matches the directory name",
+        "relative Markdown links resolve",
+        "no ignored operating-system metadata is tracked"
+      ]
+    },
+    {
+      "id": "invocation_boundaries",
+      "weight": 15,
+      "mandatory": true,
+      "evidence": [
+        "description explains the purpose and use condition",
+        "test card provides at least one positive and one negative invocation case"
+      ]
+    },
+    {
+      "id": "workflow",
+      "weight": 20,
+      "mandatory": true,
+      "evidence": [
+        "body provides an ordered workflow, decision rule, process, or checklist",
+        "test card declares the expected outcome"
+      ]
+    },
+    {
+      "id": "progressive_disclosure",
+      "weight": 15,
+      "mandatory": false,
+      "evidence": [
+        "SKILL.md stays at or below 500 lines, or has an explicit exception",
+        "long or variant-specific guidance is reachable through references"
+      ]
+    },
+    {
+      "id": "verification",
+      "weight": 15,
+      "mandatory": true,
+      "evidence": [
+        "skill has a structured test card",
+        "validation, test, check, or acceptance evidence is stated"
+      ]
+    },
+    {
+      "id": "failure_and_safety",
+      "weight": 10,
+      "mandatory": false,
+      "evidence": [
+        "failure, retry, fallback, refusal, or safety condition is documented when relevant",
+        "sensitive integration skills identify confirmation and secret-handling boundaries"
+      ]
+    },
+    {
+      "id": "source_freshness",
+      "weight": 10,
+      "mandatory": false,
+      "evidence": [
+        "registry records a source-of-truth category and last verification date when the skill contains time-sensitive information"
+      ]
+    }
+  ],
+  "risk_profiles": {
+    "high": ["api", "oauth", "config", "scheduling", "periodic", "persistent", "docker", "storage", "data-api", "maps", "notifications"],
+    "medium": ["webdev", "llm", "image", "voice", "finance", "cloud", "ssr", "game"],
+    "low": ["pptx", "music", "tts", "excel", "typst", "read-special-images", "gws"]
+  },
+  "rules": {
+    "skill_md_max_lines": 500,
+    "minimum_description_characters": 40,
+    "minimum_test_cases": 3,
+    "high_risk_minimum_test_cases": 6,
+    "forbidden_skill_root_files": ["README.md", "CHANGELOG.md", ".DS_Store"]
+  }
+}
